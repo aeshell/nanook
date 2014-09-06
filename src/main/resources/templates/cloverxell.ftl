@@ -28,10 +28,16 @@
       </div>
     </div>
     <div class="container">
-      <div class="starter-template">
+      <div>
         <h1>Have fun with some commands from aesh !</h1>
         <p class="lead">Hail !</p>
       </div>
+      
+      
+      <div>
+         <textarea class="form-control" rows="20"></textarea>
+      </div>
+      
     </div>
     <script src="static/js/jquery-1.11.1.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
