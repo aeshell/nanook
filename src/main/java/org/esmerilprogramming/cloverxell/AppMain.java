@@ -1,5 +1,8 @@
 package org.esmerilprogramming.cloverxell;
 
+import org.esmerilprogramming.cloverx.server.CloverX;
+import org.esmerilprogramming.cloverx.server.ConfigurationBuilder;
+
 /**
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
