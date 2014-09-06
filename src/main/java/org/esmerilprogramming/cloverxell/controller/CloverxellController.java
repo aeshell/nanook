@@ -11,23 +11,23 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.esmerilprogramming.cloverxell;
+package org.esmerilprogramming.cloverxell.controller;
 
-import org.esmerilprogramming.cloverx.server.CloverX;
-import org.esmerilprogramming.cloverx.server.ConfigurationBuilder;
+import org.esmerilprogramming.cloverx.annotation.Controller;
+import org.esmerilprogramming.cloverx.annotation.Page;
+import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
-public class AppMain {
+@Controller
+public class CloverxellController {
 
-  public static void main(String[] args) {
+  private static final Logger LOGGER = Logger.getLogger(CloverxellController.class);
 
-    new CloverX(new ConfigurationBuilder()
-    .withHost("127.0.0.1")
-    .withAppContext("app")
-    .build());
-
+  @Page(value = "", responseTemplate = "cloverxell.ftl")
+  public void init() {
+    LOGGER.info("init.");
   }
 
 }
