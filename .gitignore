@@ -1,0 +1,10 @@
+*.class
+*.jar
+.classpath
+.settings
+target
+.project
+*~
+.*
+!/.gitignore
+
