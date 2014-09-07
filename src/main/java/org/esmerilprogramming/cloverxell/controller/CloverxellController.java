@@ -17,6 +17,7 @@ import io.undertow.server.HttpServerExchange;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
+import org.fusesource.jansi.AnsiConsole;
 import org.jboss.aesh.extensions.common.AeshTestCommons;
 import org.jboss.aesh.extensions.ls.Ls;
 import org.jboss.logging.Logger;
@@ -32,6 +33,7 @@ public class CloverxellController extends AeshTestCommons {
   @Page(value = "", responseTemplate = "cloverxell.ftl")
   public void init() throws Exception {
     LOGGER.info("started.");
+    AnsiConsole.systemInstall();
   }
 
   @SuppressWarnings("unchecked")
