@@ -30,17 +30,29 @@
     <div class="container">
       <div>
         <h1>Have fun with some commands from aesh !</h1>
-        <p class="lead">Hail !</p>
+        <p class="lead">( type the command and click send button )</p>
       </div>
       
+      <form>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" id="inputCommand" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" onclick="cloverxell.send()">send</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      </form>
       
-      <div>
-         <textarea class="form-control" rows="20"></textarea>
+      <div class="panel">
+         <textarea id="commandResult" class="form-control" rows="20"></textarea>
       </div>
       
     </div>
-    <script src="static/js/jquery-1.11.1.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/app.js"></script>
+    <script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/app.js"></script>
   </body>
 </html>
