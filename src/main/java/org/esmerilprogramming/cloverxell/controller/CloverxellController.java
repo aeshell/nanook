@@ -13,25 +13,12 @@
  */
 package org.esmerilprogramming.cloverxell.controller;
 
+import io.undertow.server.HttpServerExchange;
+
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
-import org.jboss.aesh.console.AeshConsoleBuilder;
-import org.jboss.aesh.console.Prompt;
-import org.jboss.aesh.console.command.registry.AeshCommandRegistryBuilder;
-import org.jboss.aesh.console.settings.SettingsBuilder;
-import org.jboss.aesh.extensions.cat.Cat;
-import org.jboss.aesh.extensions.cd.Cd;
-import org.jboss.aesh.extensions.clear.Clear;
-import org.jboss.aesh.extensions.echo.Echo;
-import org.jboss.aesh.extensions.harlem.aesh.Harlem;
-import org.jboss.aesh.extensions.less.aesh.Less;
+import org.esmerilprogramming.cloverxell.util.AeshIO;
 import org.jboss.aesh.extensions.ls.Ls;
-import org.jboss.aesh.extensions.matrix.Matrix;
-import org.jboss.aesh.extensions.mkdir.Mkdir;
-import org.jboss.aesh.extensions.more.aesh.More;
-import org.jboss.aesh.extensions.pwd.Pwd;
-import org.jboss.aesh.extensions.rm.Rm;
-import org.jboss.aesh.extensions.touch.Touch;
 import org.jboss.logging.Logger;
 
 /**
@@ -44,24 +31,16 @@ public class CloverxellController {
 
   @SuppressWarnings("unchecked")
   @Page(value = "", responseTemplate = "cloverxell.ftl")
-  public void init() {
-    
-    LOGGER.info("starting aesh...");
-    SettingsBuilder sb = new SettingsBuilder();
-    AeshCommandRegistryBuilder acrb = new AeshCommandRegistryBuilder();
-    // files
-    acrb.commands(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class);
-    // screen
-    acrb.commands(Cat.class, Clear.class, Echo.class, Less.class, More.class);
-    // crazy
-    acrb.commands(Harlem.class, Matrix.class);
-
-    AeshConsoleBuilder acb = new AeshConsoleBuilder();
-    acb.commandRegistry(acrb.create());
-    acb.settings(sb.create());
-    acb.prompt(new Prompt("[scalaesh@~]$ "));
-    acb.create().start();
-    
-    LOGGER.info("done.");
+  public void init() throws Exception {
+    LOGGER.info("started.");
   }
+  
+  @Page("send")
+  public void send(String command, HttpServerExchange exchange) throws Exception {
+    AeshIO io = new AeshIO();
+    io.prepare(Ls.class);
+    String result = io.pushToShellAndBuffer(command);
+    exchange.getResponseSender().send(result);
+  }
+  
 }
