@@ -17,7 +17,7 @@ import io.undertow.server.HttpServerExchange;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
-import org.esmerilprogramming.cloverxell.util.AeshIO;
+import org.jboss.aesh.extensions.common.AeshTestCommons;
 import org.jboss.aesh.extensions.ls.Ls;
 import org.jboss.logging.Logger;
 
@@ -25,22 +25,21 @@ import org.jboss.logging.Logger;
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
 @Controller
-public class CloverxellController {
+public class CloverxellController extends AeshTestCommons {
 
   private static final Logger LOGGER = Logger.getLogger(CloverxellController.class);
 
-  @SuppressWarnings("unchecked")
   @Page(value = "", responseTemplate = "cloverxell.ftl")
   public void init() throws Exception {
     LOGGER.info("started.");
   }
-  
+
+  @SuppressWarnings("unchecked")
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
-    AeshIO io = new AeshIO();
-    io.prepare(Ls.class);
-    String result = io.pushToShellAndBuffer(command);
-    exchange.getResponseSender().send(result);
+    prepare(Ls.class);
+    pushToOutput(command);
+    exchange.getResponseSender().send(getStream().toString());
   }
-  
+
 }
