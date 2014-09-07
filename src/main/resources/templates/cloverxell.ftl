@@ -29,21 +29,15 @@
     </div>
     <div class="container">
       <div>
-        <h1>Have fun with some commands from aesh !</h1>
-        <p class="lead">( type the command and click send button )</p>
+        <h1>Run commands from aesh !</h1>
       </div>
       
-      <form>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="input-group">
-            <input type="text" id="inputCommand" class="form-control">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button" onclick="cloverxell.send()">send</button>
-            </span>
+      <form id="commandForm">
+        <div class="row">
+          <div class="col-xs-4">
+             <input type="text" id="inputCommand" class="form-control">
           </div>
         </div>
-      </div>
       </form>
       
       <div class="panel">
@@ -53,6 +47,7 @@
     </div>
     <script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/ansi_up.js"></script>
     <script type="text/javascript" src="static/js/app.js"></script>
   </body>
 </html>
