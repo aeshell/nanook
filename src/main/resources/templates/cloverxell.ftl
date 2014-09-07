@@ -29,17 +29,19 @@
     </div>
     <div class="container">
       <div>
-        <h1>Run commands from aesh !</h1>
+        <h4>Just a web wrapper to use aesh with cloverX framework</h4>
+        Available commands: Ls, Mkdir, Pwd, Rm, Touch, Cat, Clear, Echo
       </div>
+      <hr>
       
       <form id="commandForm">
         <div class="row">
           <div class="col-xs-4">
-             <input type="text" id="inputCommand" class="form-control">
+             <input type="text" id="inputCommand" class="form-control" placeholder="type commands here...">
           </div>
         </div>
       </form>
-      
+      <br>
       <div class="panel">
          <textarea id="commandResult" class="form-control" rows="20"></textarea>
       </div>
