@@ -19,8 +19,14 @@ import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
 import org.fusesource.jansi.AnsiConsole;
 import org.jboss.aesh.extensions.cat.Cat;
+import org.jboss.aesh.extensions.clear.Clear;
 import org.jboss.aesh.extensions.common.AeshTestCommons;
+import org.jboss.aesh.extensions.echo.Echo;
 import org.jboss.aesh.extensions.ls.Ls;
+import org.jboss.aesh.extensions.mkdir.Mkdir;
+import org.jboss.aesh.extensions.pwd.Pwd;
+import org.jboss.aesh.extensions.rm.Rm;
+import org.jboss.aesh.extensions.touch.Touch;
 import org.jboss.logging.Logger;
 
 /**
@@ -40,7 +46,10 @@ public class CloverxellController extends AeshTestCommons {
   @SuppressWarnings("unchecked")
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
-    prepare(Ls.class,Cat.class);
+    prepare(Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class
+        , Cat.class, Clear.class, Echo.class);
+    
+    
     pushToOutput(command);
     exchange.getResponseSender().send(getStream().toString());
   }

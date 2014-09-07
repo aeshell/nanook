@@ -12,6 +12,7 @@ var cloverxell = {
         html = html.replace(inputCommand.command,'');
         html = html.replace('0G2K','');
         html = html.replace('0G2K','');
+        html = html.replace('0Ge','');
         html = html.replace('0Gmand: ','command');
         html = html.replace('\n','');
         $("#commandResult").val(html);
