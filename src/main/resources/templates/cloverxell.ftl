@@ -42,7 +42,7 @@
       <form id="commandForm">
         <div class="row" style="background-color: #002b36;">
              <div class="input-group">
-             <span class="input-group-addon" style="border-right: #002b36; border-bottom: #002b36; background-color:#002b36; color: #657b83;">[cloverxell@localhost]$</span>
+             <span class="input-group-addon" style="padding: 1px 1px; border-right: #002b36; border-bottom: #002b36; background-color:#002b36; color: #657b83;">[cloverxell@localhost]$</span>
              <input type="text" id="inputCommand" class="form-control" style="border-left: #002b36; border-bottom: #002b36; background-color:#002b36; color: #657b83;">
              </div>
              <textarea id="commandResult" class="form-control" rows="20" style="border-top: #002b36; background-color:#002b36; color: #657b83;"></textarea>
