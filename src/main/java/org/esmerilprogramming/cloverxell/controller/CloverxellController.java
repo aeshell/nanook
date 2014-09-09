@@ -17,8 +17,8 @@ import io.undertow.server.HttpServerExchange;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
-import org.fusesource.jansi.AnsiConsole;
 import org.jboss.aesh.extensions.cat.Cat;
+import org.jboss.aesh.extensions.cd.Cd;
 import org.jboss.aesh.extensions.clear.Clear;
 import org.jboss.aesh.extensions.common.AeshTestCommons;
 import org.jboss.aesh.extensions.echo.Echo;
@@ -27,6 +27,7 @@ import org.jboss.aesh.extensions.mkdir.Mkdir;
 import org.jboss.aesh.extensions.pwd.Pwd;
 import org.jboss.aesh.extensions.rm.Rm;
 import org.jboss.aesh.extensions.touch.Touch;
+import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
 
 /**
@@ -40,18 +41,22 @@ public class CloverxellController extends AeshTestCommons {
   @Page(value = "", responseTemplate = "cloverxell.ftl")
   public void init() throws Exception {
     LOGGER.info("started.");
-    AnsiConsole.systemInstall();
   }
 
   @SuppressWarnings("unchecked")
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
-    prepare(Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class
-        , Cat.class, Clear.class, Echo.class);
-    
+
+    prepare(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class, Cat.class, Clear.class,
+        Echo.class);
     
     pushToOutput(command);
-    exchange.getResponseSender().send(getStream().toString());
+    
+    String result = Parser.stripAwayAnsiCodes(getStream().toString());
+    
+    LOGGER.info(result);
+    
+    exchange.getResponseSender().send(result);
   }
 
 }
