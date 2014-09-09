@@ -43,7 +43,7 @@
       </form>
       <br>
       <div class="panel">
-         <textarea id="commandResult" class="form-control" rows="20"></textarea>
+         <textarea readonly id="commandResult" class="form-control" rows="20"></textarea>
       </div>
       
     </div>
