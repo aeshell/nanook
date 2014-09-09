@@ -23,10 +23,6 @@ var cloverxell = {
       success : function(response) {
         var html = ansi_up.ansi_to_html(response);
         html = html.replace(inputCommand.command,'');
-        html = html.replace('0G2K','');
-        html = html.replace('0G2K','');
-        html = html.replace('0Ge','');
-        html = html.replace('0Gmand: ','command');
         html = html.replace('\n','');
         $("#commandResult").val(html);
       },

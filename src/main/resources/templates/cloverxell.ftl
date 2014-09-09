@@ -12,6 +12,7 @@
     body {
       padding-top: 50px;
     }
+    input, textarea {  }
   </style>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -37,13 +38,13 @@
       <form id="commandForm">
         <div class="row">
           <div class="col-xs-4">
-             <input type="text" id="inputCommand" class="form-control" placeholder="type commands here...">
+             <input type="text" id="inputCommand" class="form-control" style="background-color:#002b36; color: #657b83;" placeholder="type commands here...">
           </div>
         </div>
       </form>
       <br>
       <div class="panel">
-         <textarea readonly id="commandResult" class="form-control" rows="20"></textarea>
+         <textarea readonly id="commandResult" class="form-control" rows="20" style="background-color:#002b36; color: #657b83;"></textarea>
       </div>
       
     </div>
