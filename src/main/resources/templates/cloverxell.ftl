@@ -12,7 +12,11 @@
     body {
       padding-top: 50px;
     }
-    input, textarea {  }
+    .form-control:focus{
+      border-color: #cccccc;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
   </style>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -36,15 +40,16 @@
       <hr>
       
       <form id="commandForm">
-        <div class="row">
-          <div class="col-xs-4">
-             <input type="text" id="inputCommand" class="form-control" style="background-color:#002b36; color: #657b83;" placeholder="type commands here...">
-          </div>
+        <div class="row" style="background-color: #002b36;">
+             <div class="input-group">
+             <span class="input-group-addon" style="border-right: #002b36; border-bottom: #002b36; background-color:#002b36; color: #657b83;">[cloverxell@localhost]$</span>
+             <input type="text" id="inputCommand" class="form-control" style="border-left: #002b36; border-bottom: #002b36; background-color:#002b36; color: #657b83;">
+             </div>
+             <textarea id="commandResult" class="form-control" rows="20" style="border-top: #002b36; background-color:#002b36; color: #657b83;"></textarea>
         </div>
       </form>
-      <br>
       <div class="panel">
-         <textarea readonly id="commandResult" class="form-control" rows="20" style="background-color:#002b36; color: #657b83;"></textarea>
+         
       </div>
       
     </div>
