@@ -14,9 +14,21 @@
 package org.esmerilprogramming.cloverxell.controller;
 
 import io.undertow.server.HttpServerExchange;
+import io.undertow.server.handlers.Cookie;
+import io.undertow.server.handlers.CookieImpl;
+
+import java.io.IOException;
+import java.util.Map;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
+import org.jboss.aesh.console.Console;
+import org.jboss.aesh.console.ConsoleCallback;
+import org.jboss.aesh.console.ConsoleOperation;
+import org.jboss.aesh.console.Process;
+import org.jboss.aesh.console.Prompt;
+import org.jboss.aesh.console.command.CommandOperation;
+import org.jboss.aesh.console.settings.SettingsBuilder;
 import org.jboss.aesh.extensions.cat.Cat;
 import org.jboss.aesh.extensions.cd.Cd;
 import org.jboss.aesh.extensions.clear.Clear;
@@ -34,29 +46,56 @@ import org.jboss.logging.Logger;
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
 @Controller
-public class CloverxellController extends AeshTestCommons {
+public class CloverxellController {
 
   private static final Logger LOGGER = Logger.getLogger(CloverxellController.class);
-
+  
+  private static AeshHandler aesh = new AeshHandler();
+  
   @Page(value = "", responseTemplate = "cloverxell.ftl")
   public void init() throws Exception {
     LOGGER.info("started.");
   }
-
+  
   @SuppressWarnings("unchecked")
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
-
-    prepare(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class, Cat.class, Clear.class,
-        Echo.class);
     
-    pushToOutput(command);
-    
-    String result = Parser.stripAwayAnsiCodes(getStream().toString());
-    
+    aesh.pushToOutput(command);
+    String result = Parser.stripAwayAnsiCodes(aesh.getStream().toString());
     LOGGER.info(result);
     
     exchange.getResponseSender().send(result);
+    aesh.getStream().reset();
+  }
+  
+  public static void main(String[] args) {
+    final Console console = new Console(new SettingsBuilder().create());
+    console.setPrompt(new Prompt("[aesh]$ "));
+
+    console.setConsoleCallback(new ConsoleCallback() {
+        @Override
+        public int execute(ConsoleOperation output) {
+            console.getShell().out().println("======>\"" + output.getBuffer());
+            if (output.getBuffer().equals("quit")) {
+                console.stop();
+            }
+            return 0;
+        }
+
+        @Override
+        public CommandOperation getInput() throws InterruptedException {
+          // TODO Auto-generated method stub
+          return null;
+        }
+
+        @Override
+        public void setProcess(Process arg0) {
+          // TODO Auto-generated method stub
+          
+        }
+    });
+    console.start();
   }
 
 }
