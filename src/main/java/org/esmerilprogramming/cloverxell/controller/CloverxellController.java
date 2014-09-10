@@ -17,7 +17,6 @@ import io.undertow.server.HttpServerExchange;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
-import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
 
 /**
@@ -37,13 +36,9 @@ public class CloverxellController {
   
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
-    
-    aesh.pushToOutput(command);
-    String result = Parser.stripAwayAnsiCodes(aesh.getStream().toString());
-    LOGGER.info(result);
-    
-    exchange.getResponseSender().send(result);
-    aesh.getStream().reset();
+    aesh.run(command);
+    exchange.getResponseSender().send(aesh.getResult());
+    aesh.reset();
   }
   
 }
