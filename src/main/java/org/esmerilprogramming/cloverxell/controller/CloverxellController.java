@@ -17,16 +17,6 @@ import io.undertow.server.HttpServerExchange;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
-import org.jboss.aesh.extensions.cat.Cat;
-import org.jboss.aesh.extensions.cd.Cd;
-import org.jboss.aesh.extensions.clear.Clear;
-import org.jboss.aesh.extensions.common.AeshTestCommons;
-import org.jboss.aesh.extensions.echo.Echo;
-import org.jboss.aesh.extensions.ls.Ls;
-import org.jboss.aesh.extensions.mkdir.Mkdir;
-import org.jboss.aesh.extensions.pwd.Pwd;
-import org.jboss.aesh.extensions.rm.Rm;
-import org.jboss.aesh.extensions.touch.Touch;
 import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
 
@@ -34,29 +24,26 @@ import org.jboss.logging.Logger;
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
 @Controller
-public class CloverxellController extends AeshTestCommons {
+public class CloverxellController {
 
   private static final Logger LOGGER = Logger.getLogger(CloverxellController.class);
-
+  
+  private static AeshHandler aesh = new AeshHandler();
+  
   @Page(value = "", responseTemplate = "cloverxell.ftl")
   public void init() throws Exception {
     LOGGER.info("started.");
   }
-
-  @SuppressWarnings("unchecked")
+  
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
-
-    prepare(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class, Cat.class, Clear.class,
-        Echo.class);
     
-    pushToOutput(command);
-    
-    String result = Parser.stripAwayAnsiCodes(getStream().toString());
-    
+    aesh.pushToOutput(command);
+    String result = Parser.stripAwayAnsiCodes(aesh.getStream().toString());
     LOGGER.info(result);
     
     exchange.getResponseSender().send(result);
+    aesh.getStream().reset();
   }
-
+  
 }
