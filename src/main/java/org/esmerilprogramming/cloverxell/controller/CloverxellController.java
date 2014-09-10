@@ -14,31 +14,9 @@
 package org.esmerilprogramming.cloverxell.controller;
 
 import io.undertow.server.HttpServerExchange;
-import io.undertow.server.handlers.Cookie;
-import io.undertow.server.handlers.CookieImpl;
-
-import java.io.IOException;
-import java.util.Map;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
-import org.jboss.aesh.console.Console;
-import org.jboss.aesh.console.ConsoleCallback;
-import org.jboss.aesh.console.ConsoleOperation;
-import org.jboss.aesh.console.Process;
-import org.jboss.aesh.console.Prompt;
-import org.jboss.aesh.console.command.CommandOperation;
-import org.jboss.aesh.console.settings.SettingsBuilder;
-import org.jboss.aesh.extensions.cat.Cat;
-import org.jboss.aesh.extensions.cd.Cd;
-import org.jboss.aesh.extensions.clear.Clear;
-import org.jboss.aesh.extensions.common.AeshTestCommons;
-import org.jboss.aesh.extensions.echo.Echo;
-import org.jboss.aesh.extensions.ls.Ls;
-import org.jboss.aesh.extensions.mkdir.Mkdir;
-import org.jboss.aesh.extensions.pwd.Pwd;
-import org.jboss.aesh.extensions.rm.Rm;
-import org.jboss.aesh.extensions.touch.Touch;
 import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
 
@@ -57,7 +35,6 @@ public class CloverxellController {
     LOGGER.info("started.");
   }
   
-  @SuppressWarnings("unchecked")
   @Page("send")
   public void send(String command, HttpServerExchange exchange) throws Exception {
     
@@ -69,33 +46,4 @@ public class CloverxellController {
     aesh.getStream().reset();
   }
   
-  public static void main(String[] args) {
-    final Console console = new Console(new SettingsBuilder().create());
-    console.setPrompt(new Prompt("[aesh]$ "));
-
-    console.setConsoleCallback(new ConsoleCallback() {
-        @Override
-        public int execute(ConsoleOperation output) {
-            console.getShell().out().println("======>\"" + output.getBuffer());
-            if (output.getBuffer().equals("quit")) {
-                console.stop();
-            }
-            return 0;
-        }
-
-        @Override
-        public CommandOperation getInput() throws InterruptedException {
-          // TODO Auto-generated method stub
-          return null;
-        }
-
-        @Override
-        public void setProcess(Process arg0) {
-          // TODO Auto-generated method stub
-          
-        }
-    });
-    console.start();
-  }
-
 }
