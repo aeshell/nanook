@@ -35,7 +35,7 @@
     <div class="container">
       <div>
         <h4>Just a web wrapper to use aesh with cloverX framework</h4>
-        Available commands: Ls, Mkdir, Pwd, Rm, Touch, Cat, Clear, Echo
+        Available commands: Cd, Ls, Mkdir, Pwd, Rm, Touch, Cat, Clear, Echo
       </div>
       <hr>
       
@@ -48,9 +48,6 @@
              <textarea id="commandResult" class="form-control" rows="20" style="border-top: #002b36; background-color:#002b36; color: #657b83;"></textarea>
         </div>
       </form>
-      <div class="panel">
-         
-      </div>
       
     </div>
     <script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
