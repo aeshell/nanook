@@ -17,6 +17,8 @@ import io.undertow.server.HttpServerExchange;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
+import org.esmerilprogramming.cloverx.http.CloverXRequest;
+import org.esmerilprogramming.cloverx.http.CloverXSession;
 import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
 
@@ -28,22 +30,30 @@ public class CloverxellController {
 
   private static final Logger LOGGER = Logger.getLogger(CloverxellController.class);
   
-  private static AeshHandler aesh = new AeshHandler();
-  
   @Page(value = "", responseTemplate = "cloverxell.ftl")
   public void init() throws Exception {
     LOGGER.info("started.");
   }
   
   @Page("send")
-  public void send(String command, HttpServerExchange exchange) throws Exception {
-    
+  public void send(String command, CloverXRequest request) throws Exception {
+    AeshHandler aesh = getAeshHandler(request);
+
     aesh.pushToOutput(command);
     String result = Parser.stripAwayAnsiCodes(aesh.getStream().toString());
     LOGGER.info(result);
     
-    exchange.getResponseSender().send(result);
+    request.getExchange().getResponseSender().send(result);
     aesh.getStream().reset();
+  }
+  
+  protected AeshHandler getAeshHandler(CloverXRequest request){
+    CloverXSession session = request.getSession();
+    Object attribute = session.getAttribute("aesh");
+    if(attribute == null){
+      session.setAttribute("aesh", new AeshHandler());
+    }
+    return session.getAttribute("aesh" , AeshHandler.class);
   }
   
 }

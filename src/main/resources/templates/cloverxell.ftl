@@ -17,6 +17,8 @@
       -webkit-box-shadow: none;
       box-shadow: none;
     }
+    .modifiqueiHAHA{
+    }
   </style>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
