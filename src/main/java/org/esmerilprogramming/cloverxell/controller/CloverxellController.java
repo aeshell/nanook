@@ -13,13 +13,10 @@
  */
 package org.esmerilprogramming.cloverxell.controller;
 
-import io.undertow.server.HttpServerExchange;
-
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
 import org.esmerilprogramming.cloverx.http.CloverXRequest;
 import org.esmerilprogramming.cloverx.http.CloverXSession;
-import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
 
 /**
@@ -38,13 +35,9 @@ public class CloverxellController {
   @Page("send")
   public void send(String command, CloverXRequest request) throws Exception {
     AeshHandler aesh = getAeshHandler(request);
-
-    aesh.pushToOutput(command);
-    String result = Parser.stripAwayAnsiCodes(aesh.getStream().toString());
-    LOGGER.info(result);
-    
-    request.getExchange().getResponseSender().send(result);
-    aesh.getStream().reset();
+    aesh.run(command);
+    request.getExchange().getResponseSender().send(aesh.getResult());
+    aesh.reset();
   }
   
   protected AeshHandler getAeshHandler(CloverXRequest request){
