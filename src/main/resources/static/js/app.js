@@ -22,8 +22,13 @@ var cloverxell = {
       dataType : "html",
       success : function(response) {
         var html = ansi_up.ansi_to_html(response);
+        
+        var ps1 = "[" + window.location.hostname + "@" + html.split("@",2)[1] + "]$";
+        $('#commandPrompt').html(ps1);
+        
         html = html.replace(inputCommand.command,'');
         html = html.replace('\n','');
+        html = html.split("@",1);
         $("#commandResult").val(html);
       },
       error : function(xhr, st, err) {
@@ -32,7 +37,7 @@ var cloverxell = {
         console.dir(xhr);
       }
     });
-  }
+  }  
 };
 
 $('#commandForm').submit(function(event) {
