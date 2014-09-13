@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
+import java.util.Set;
 
 import org.jboss.aesh.console.AeshConsole;
 import org.jboss.aesh.console.AeshConsoleBuilder;
@@ -144,5 +145,12 @@ public class AeshHandler {
     return stream;
   }
 
+  /**
+   * Gets all registered commands.
+   * @return Set<String> 
+   */
+  public Set<String> getRegisteredCommands() {
+    return registry.getAllCommandNames();
+  }
 
 }
