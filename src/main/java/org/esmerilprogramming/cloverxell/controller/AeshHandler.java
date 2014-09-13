@@ -153,4 +153,13 @@ public class AeshHandler {
     return registry.getAllCommandNames();
   }
 
+  
+  /**
+   * Gets the current working directory.
+   * @return String
+   */
+  public String getCurrentDirectory() {
+    return aeshConsole.getAeshContext().getCurrentWorkingDirectory().getName();
+  }
+  
 }
