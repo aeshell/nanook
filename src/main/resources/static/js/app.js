@@ -37,10 +37,17 @@ var cloverxell = {
         console.dir(xhr);
       }
     });
-  }  
+  },
+  stop : function() {
+    $.ajax({url : "app/stop"});
+  }
 };
 
 $('#commandForm').submit(function(event) {
   event.preventDefault();
   cloverxell.send();
+});
+
+$(window).unload(function() {
+  cloverxell.stop();
 });
