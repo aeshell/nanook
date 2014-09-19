@@ -162,4 +162,11 @@ public class AeshHandler {
     return aeshConsole.getAeshContext().getCurrentWorkingDirectory().getName();
   }
   
+  /**
+   * Stops the aesh console.
+   */
+  public void stop() {
+    aeshConsole.stop();
+  }
+  
 }
