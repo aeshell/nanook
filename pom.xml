@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.esmerilprogramming</groupId>
   <artifactId>cloverxell</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.56</version>
   <name>cloverxell</name>
   <packaging>jar</packaging>
   <properties>
@@ -33,8 +33,9 @@
             <configuration>
               <outputDirectory>${project.build.directory}/lib</outputDirectory>
               <overWriteReleases>false</overWriteReleases>
-                        <overWriteSnapshots>false</overWriteSnapshots>
-                        <overWriteIfNewer>true</overWriteIfNewer>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <includeScope>runtime</includeScope>
             </configuration>
           </execution>
         </executions>
@@ -51,7 +52,7 @@
               <mainClass>org.esmerilprogramming.cloverxell.AppMain</mainClass>
             </manifest>
             <manifestEntries>
-                <Class-Path>.</Class-Path>
+              <Class-Path>.</Class-Path>
             </manifestEntries>
           </archive>
         </configuration>
