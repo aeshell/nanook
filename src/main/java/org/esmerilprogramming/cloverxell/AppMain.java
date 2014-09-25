@@ -13,6 +13,9 @@
  */
 package org.esmerilprogramming.cloverxell;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.esmerilprogramming.cloverx.server.CloverX;
 import org.esmerilprogramming.cloverx.server.ConfigurationBuilder;
 
@@ -21,13 +24,56 @@ import org.esmerilprogramming.cloverx.server.ConfigurationBuilder;
  */
 public class AppMain {
 
+  private static final String HELP = "usage: java -jar -h 192.168.1.1 -p 8080 -c app";
+
   public static void main(String[] args) {
 
-    new CloverX(new ConfigurationBuilder()
-    .withHost("127.0.0.1")
-    .withAppContext("app")
-    .build());
+    ConfigurationBuilder cb = new ConfigurationBuilder();
+    cb.withHost("0.0.0.0");
+    cb.withAppContext("app");
+
+    List<String> options = new ArrayList<>();
+    for (String o : args) {
+      options.add(o);
+    }
+
+    if (options.contains("help")) {
+      System.out.println(HELP);
+      return;
+    }
+
+    if (options.size() % 2 != 0) {
+      System.out.println(HELP);
+      return;
+    }
+
+    if (options.contains("-h")) {
+      String host = options.get(options.indexOf("-h") + 1);
+      if (!host.trim().isEmpty()) {
+        cb.withHost(host);
+      }
+    }
+
+    if (options.contains("-p")) {
+      String port = options.get(options.indexOf("-p") + 1);
+      if (!port.trim().isEmpty()) {
+        for (char c : port.toCharArray()) {
+          if (!Character.isDigit(c)) {
+            return;
+          }
+        }
+        cb.withPort(Integer.parseInt(port));
+      }
+    }
+
+    if (options.contains("-c")) {
+      String context = options.get(options.indexOf("-c") + 1);
+      if (!context.trim().isEmpty()) {
+        cb.withAppContext(context);
+      }
+    }
+
+    new CloverX(cb.build());
 
   }
-
 }
