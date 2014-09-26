@@ -21,8 +21,7 @@ var cloverxell = {
       type : "POST",
       dataType : "html",
       success : function(response) {
-        var html = ansi_up.ansi_to_html(response);
-        
+        var html = response;
         var ps1 = "[" + window.location.hostname + "@" + html.split("@",2)[1] + "]$";
         $('#commandPrompt').html(ps1);
         
