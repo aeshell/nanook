@@ -56,7 +56,7 @@ pre {
         <ul class="nav navbar-nav">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-left: -20px;">File<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Open Tab</a></li>
+              <li><a href="#" onclick="cloverxell.newTab();">Open Tab</a></li>
               <li><a href="#">Exit</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit<span class="caret"></span></a>

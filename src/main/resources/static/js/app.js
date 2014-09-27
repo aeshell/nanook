@@ -42,6 +42,9 @@ var cloverxell = {
   },
   stop : function() {
     $.ajax({url : "app/stop"});
+  },
+  newTab : function() {
+    window.open($(location).attr('href'), '_blank').focus();
   }
 };
 
@@ -49,7 +52,3 @@ $('#commandForm').submit(function(event) {
   event.preventDefault();
   cloverxell.send();
 });
-
-/*$(window).unload(function() {
-  cloverxell.stop();
-});*/
