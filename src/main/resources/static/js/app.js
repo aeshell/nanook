@@ -15,6 +15,7 @@ var cloverxell = {
   send : function() {
     var inputCommand = new Object();
     inputCommand.command = $("#inputCommand").val();
+    $("#inputCommand").val("");
     $.ajax({
       url : "app/send",
       data : inputCommand,
@@ -28,7 +29,9 @@ var cloverxell = {
         html = html.replace(inputCommand.command,'');
         html = html.replace('\n','');
         html = html.split("@",1);
-        $("#commandResult").val(html);
+        
+        var resultEscaped = $("<div/>").text(html).html();
+        $("#commandResult").html("<pre><code>" + resultEscaped + "</code></pre>").text();
       },
       error : function(xhr, st, err) {
         console.log("Error: " + err);
@@ -47,6 +50,6 @@ $('#commandForm').submit(function(event) {
   cloverxell.send();
 });
 
-$(window).unload(function() {
+/*$(window).unload(function() {
   cloverxell.stop();
-});
+});*/
