@@ -47,7 +47,7 @@ public class CloverxellController {
     aesh.stop();
     LOGGER.info("stoped.");
   }
-
+  
   protected AeshHandler getAeshHandler(CloverXRequest request) {
     CloverXSession session = request.getSession();
     Object attribute = session.getAttribute("aesh");

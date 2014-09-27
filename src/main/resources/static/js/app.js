@@ -17,7 +17,7 @@ var cloverxell = {
     inputCommand.command = $("#inputCommand").val();
     $("#inputCommand").val("");
     $.ajax({
-      url : "app/send",
+      url : $(location).attr('href') + "/send",
       data : inputCommand,
       type : "POST",
       dataType : "html",
@@ -41,7 +41,7 @@ var cloverxell = {
     });
   },
   stop : function() {
-    $.ajax({url : "app/stop"});
+    $.ajax({url : $(location).attr('href') + "/stop"});
   },
   newTab : function() {
     window.open($(location).attr('href'), '_blank').focus();
