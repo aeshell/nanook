@@ -72,13 +72,22 @@ pre {
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Terminal<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="javascript:void(0);" onclick="document.getElementById('inputCommand').value='clear';cloverxell.send();">Clear</a></li>
-              <li><a href="#">Set Title...</a></li>
+              <li><a href="javascript:void(0);" onclick="document.getElementById('titleForm').style.display='block';">Set Title...</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="#">Contents</a></li>
               <li><a href="#">About</a></li>
-            </ul></li>
+            </ul>
+          </li>
+          <li id="titleForm" style="display:none;">
+            <form class="navbar-form navbar-left">
+              <div class="form-group">
+                <input type="text" id="inputTitle" class="form-control" placeholder="Title...">
+              </div>
+              <button type="button" onclick="document.title=inputTitle.value;document.getElementById('titleForm').style.display='none';" class="btn btn-default">Ok</button>
+            </form>
+          </li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
