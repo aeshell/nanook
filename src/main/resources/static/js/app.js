@@ -17,17 +17,17 @@ var cloverxell = {
     inputCommand.command = $("#inputCommand").val();
     $("#inputCommand").val("");
     $.ajax({
-      url : $(location).attr('href') + "/send",
+      url : $(location).attr("href") + "/send",
       data : inputCommand,
       type : "POST",
       dataType : "html",
       success : function(response) {
         var html = response;
         var ps1 = "[" + window.location.hostname + "@" + html.split("@",2)[1] + "]$";
-        $('#commandPrompt').html(ps1);
+        $("#commandPrompt").html(ps1);
         
         html = html.replace(inputCommand.command,'');
-        html = html.replace('\n','');
+        html = html.replace("\n","");
         html = html.split("@",1);
         
         var resultEscaped = $("<div/>").text(html).html();
@@ -41,14 +41,35 @@ var cloverxell = {
     });
   },
   stop : function() {
-    $.ajax({url : $(location).attr('href') + "/stop"});
+    $.ajax({url : $(location).attr("href") + "/stop"});
   },
   newTab : function() {
-    window.open($(location).attr('href'), '_blank').focus();
-  }
+    window.open($(location).attr("href"), "_blank").focus();
+  },
+  fontInc : function() {
+    var currentSizeInput = parseInt($("#inputCommand").css("font-size")) + 2;
+    var currentSizeResult = parseInt($("#commandResult").css("font-size")) + 2;
+    if(currentSizeInput <= 18) {
+      $("#inputCommand").css("font-size", currentSizeInput);
+    }
+    if(currentSizeResult <= 18) {
+      $("#commandResult").css("font-size", currentSizeResult);
+    }
+  },
+  fontDec : function() {
+    currentSizeInput = parseInt($("#inputCommand").css("font-size")) - 2;
+    currentSizeResult = parseInt($("#commandResult").css("font-size")) - 2;
+    if(currentSizeInput >= 10) {
+      console.log(currentSizeInput);
+      $("#inputCommand").css("font-size", currentSizeInput + "px;");
+    }
+    if(currentSizeResult >= 10) {
+      $("#commandResult").css("font-size", currentSizeResult + "px;");
+    }
+  } 
 };
 
-$('#commandForm').submit(function(event) {
+$("#commandForm").submit(function(event) {
   event.preventDefault();
   cloverxell.send();
 });
