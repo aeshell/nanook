@@ -65,8 +65,8 @@ pre {
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Size +</a></li>
-              <li><a href="#">Size -</a></li>
+              <li><a href="javascript:void(0);" onclick="cloverxell.fontInc();">Size +</a></li>
+              <li><a href="javascript:void(0);" onclick="cloverxell.fontDec();">Size -</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Terminal<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
