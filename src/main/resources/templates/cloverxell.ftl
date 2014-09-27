@@ -57,7 +57,6 @@ pre {
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-left: -20px;">File<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="javascript:void(0);" onclick="cloverxell.newTab();">Open Tab</a></li>
-              <li><a href="#">Exit</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -76,7 +75,7 @@ pre {
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Contents</a></li>
+              <li><a href="https://github.com/EsmerilProgramming/cloverxell" target="_blank">Contents</a></li>
               <li><a href="#">About</a></li>
             </ul>
           </li>
