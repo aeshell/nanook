@@ -56,7 +56,7 @@ pre {
         <ul class="nav navbar-nav">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-left: -20px;">File<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#" onclick="cloverxell.newTab();">Open Tab</a></li>
+              <li><a href="javascript:void(0);" onclick="cloverxell.newTab();">Open Tab</a></li>
               <li><a href="#">Exit</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit<span class="caret"></span></a>
@@ -71,8 +71,8 @@ pre {
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Terminal<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">One here</a></li>
-              <li><a href="#">Other here</a></li>
+              <li><a href="javascript:void(0);" onclick="document.getElementById('inputCommand').value='clear';cloverxell.send();">Clear</a></li>
+              <li><a href="#">Set Title...</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
