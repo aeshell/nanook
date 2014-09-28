@@ -31,7 +31,7 @@ var cloverxell = {
         html = html.split("@",1);
         
         var resultEscaped = $("<div/>").text(html).html();
-        $("#commandResult").html("<pre><code>" + resultEscaped + "</code></pre>").text();
+        $("#commandResult").html("<pre><code class='command-result'>" + resultEscaped + "</code></pre>").text();
       },
       error : function(xhr, st, err) {
         console.log("Error: " + err);
@@ -47,24 +47,19 @@ var cloverxell = {
     window.open($(location).attr("href"), "_blank").focus();
   },
   fontInc : function() {
-    var currentSizeInput = parseInt($("#inputCommand").css("font-size")) + 2;
-    var currentSizeResult = parseInt($("#commandResult").css("font-size")) + 2;
-    if(currentSizeInput <= 18) {
-      $("#inputCommand").css("font-size", currentSizeInput);
-    }
-    if(currentSizeResult <= 18) {
-      $("#commandResult").css("font-size", currentSizeResult);
+    var currentSize = parseInt($(".form-control").css("font-size")) + 2;
+    if(currentSize <= 18) {
+      $(".input-group-addon").css("font-size", currentSize + "px");
+      $(".form-control").css("font-size", currentSize + "px");
+      $(".command-result").css("font-size", currentSize + "px");
     }
   },
   fontDec : function() {
-    currentSizeInput = parseInt($("#inputCommand").css("font-size")) - 2;
-    currentSizeResult = parseInt($("#commandResult").css("font-size")) - 2;
-    if(currentSizeInput >= 10) {
-      console.log(currentSizeInput);
-      $("#inputCommand").css("font-size", currentSizeInput + "px;");
-    }
-    if(currentSizeResult >= 10) {
-      $("#commandResult").css("font-size", currentSizeResult + "px;");
+    var currentSize = parseInt($(".form-control").css("font-size")) - 2;
+    if(currentSize >= 10) {
+      $(".form-control").css("font-size", currentSize + "px");
+      $(".input-group-addon").css("font-size", currentSize + "px");
+      $(".command-result").css("font-size", currentSize + "px");
     }
   } 
 };
