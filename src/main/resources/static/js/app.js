@@ -31,7 +31,7 @@ var cloverxell = {
         html = html.split("@",1);
         
         var resultEscaped = $("<div/>").text(html).html();
-        $("#commandResult").html("<pre><code class='command-result'>" + resultEscaped + "</code></pre>").text();
+        $("#codeCommandResult").html("\r" + resultEscaped).text();
       },
       error : function(xhr, st, err) {
         console.log("Error: " + err);
@@ -61,7 +61,21 @@ var cloverxell = {
       $(".input-group-addon").css("font-size", currentSize + "px");
       $(".command-result").css("font-size", currentSize + "px");
     }
-  } 
+  },
+  setBgColor : function (c) {
+    $(".form-control").css("backgroundColor", c);
+    $(".input-group-addon").css("backgroundColor", c);
+    $(".pre-command-result").css("backgroundColor", c);
+    $(".command-result").css("backgroundColor", c);
+    $(".input-group").css("backgroundColor", c);
+    $("body").css("backgroundColor", c);
+  },
+  setFgColor : function (c) {
+    $(".form-control").css("color", c);
+    $(".input-group-addon").css("color", c);
+    $(".pre-command-result").css("color", c);
+    $(".command-result").css("color", c);
+  }
 };
 
 $("#commandForm").submit(function(event) {
