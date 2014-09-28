@@ -33,21 +33,25 @@ public class CloverxellController {
   }
 
   @Page("send")
-  public void send(String command, CloverXRequest request) throws Exception {
+  public void send(String command, String customCommand, CloverXRequest request) throws Exception {
     AeshHandler aesh = getAeshHandler(request);
-    aesh.run(command);
+    if (customCommand == null) {
+      aesh.run(command);
+    } else {
+      aesh.run(customCommand);
+    }
     String result = aesh.getResult() + "@" + aesh.getCurrentDirectory();
     request.getExchange().getResponseSender().send(result);
     aesh.reset();
   }
-  
+
   @Page("stop")
   public void stop(CloverXRequest request) throws Exception {
     AeshHandler aesh = getAeshHandler(request);
     aesh.stop();
     LOGGER.info("stoped.");
   }
-  
+
   protected AeshHandler getAeshHandler(CloverXRequest request) {
     CloverXSession session = request.getSession();
     Object attribute = session.getAttribute("aesh");

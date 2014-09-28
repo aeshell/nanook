@@ -118,7 +118,7 @@ body {
           <span id="commandPrompt" class="input-group-addon" style="padding-left: 12px; padding-right: 0; border: #002b36; background-color: #002b36; color: #657b83;">[cloverxell@localhost]$</span> 
           <input type="text" id="inputCommand" class="form-control" style="border: #002b36; background-color: #002b36; color: #657b83;">
         </div>
-        <div id="commandResult" class='command-result'>
+        <div id="commandResult" class='command-result' style="margin-top: -25px;">
           <pre id="preCommandResult" class='pre-command-result'>
           <code id="codeCommandResult" class='code-command-result'>
           </code>

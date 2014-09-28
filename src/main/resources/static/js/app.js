@@ -12,9 +12,12 @@
  * the License.
  */
 var cloverxell = {
-  send : function() {
+  send : function(customCommand) {
     var inputCommand = new Object();
     inputCommand.command = $("#inputCommand").val();
+    if (customCommand) {
+      inputCommand.customCommand = customCommand; 
+    }
     $("#inputCommand").val("");
     $.ajax({
       url : $(location).attr("href") + "/send",
@@ -23,13 +26,14 @@ var cloverxell = {
       dataType : "html",
       success : function(response) {
         var html = response;
-        var ps1 = "[" + window.location.hostname + "@" + html.split("@",2)[1] + "]$";
+        var ps1 = "[" + window.location.hostname + "@" + html.split("@", 2)[1]
+            + "]$";
         $("#commandPrompt").html(ps1);
-        
-        html = html.replace(inputCommand.command,'');
-        html = html.replace("\n","");
-        html = html.split("@",1);
-        
+
+        html = html.replace(inputCommand.command, '');
+        html = html.replace("\n", "");
+        html = html.split("@", 1);
+
         var resultEscaped = $("<div/>").text(html).html();
         $("#codeCommandResult").html("\r" + resultEscaped).text();
       },
@@ -41,14 +45,16 @@ var cloverxell = {
     });
   },
   stop : function() {
-    $.ajax({url : $(location).attr("href") + "/stop"});
+    $.ajax({
+      url : $(location).attr("href") + "/stop"
+    });
   },
   newTab : function() {
     window.open($(location).attr("href"), "_blank").focus();
   },
   fontInc : function() {
     var currentSize = parseInt($(".form-control").css("font-size")) + 2;
-    if(currentSize <= 18) {
+    if (currentSize <= 18) {
       $(".input-group-addon").css("font-size", currentSize + "px");
       $(".form-control").css("font-size", currentSize + "px");
       $(".command-result").css("font-size", currentSize + "px");
@@ -56,13 +62,13 @@ var cloverxell = {
   },
   fontDec : function() {
     var currentSize = parseInt($(".form-control").css("font-size")) - 2;
-    if(currentSize >= 10) {
+    if (currentSize >= 10) {
       $(".form-control").css("font-size", currentSize + "px");
       $(".input-group-addon").css("font-size", currentSize + "px");
       $(".command-result").css("font-size", currentSize + "px");
     }
   },
-  setBgColor : function (c) {
+  setBgColor : function(c) {
     $(".form-control").css("backgroundColor", c);
     $(".input-group-addon").css("backgroundColor", c);
     $(".pre-command-result").css("backgroundColor", c);
@@ -70,7 +76,7 @@ var cloverxell = {
     $(".input-group").css("backgroundColor", c);
     $("body").css("backgroundColor", c);
   },
-  setFgColor : function (c) {
+  setFgColor : function(c) {
     $(".form-control").css("color", c);
     $(".input-group-addon").css("color", c);
     $(".pre-command-result").css("color", c);
@@ -81,4 +87,11 @@ var cloverxell = {
 $("#commandForm").submit(function(event) {
   event.preventDefault();
   cloverxell.send();
+});
+
+$("body").on("keydown", "#inputCommand", function(e) {
+  if (e.which == 9) {
+    e.preventDefault();
+    cloverxell.send("\t");
+  }
 });
