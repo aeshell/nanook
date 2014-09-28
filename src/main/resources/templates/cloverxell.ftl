@@ -143,7 +143,7 @@ body {
           
           0.56
 
-          A web terminal to use aesh with cloverX framework
+          A web terminal
           </code>
           </pre>
         </div>
