@@ -1,7 +1,7 @@
 cloverxell
 ==========
 
-A web terminal to use aesh with cloverX framework
+A web terminal
 
 ![Alt cloverxell](https://raw.githubusercontent.com/EsmerilProgramming/cloverxell/master/cloverxell.png)
 
