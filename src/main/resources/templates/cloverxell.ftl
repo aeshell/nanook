@@ -42,6 +42,20 @@ pre {
   color: #657b83;
   border: #002b36;
 }
+
+.label-cloverxell {
+  background-color: #002b36;
+}
+
+.label-black {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.label-white {
+  background-color: #ffffff;
+  color: #000000;
+}
 </style>
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -60,8 +74,8 @@ pre {
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">BG color</a></li>
-              <li><a href="#">FG color</a></li>
+              <li><a href="javascript:void(0);" data-toggle="modal" data-target="#bgModal">BG color</a></li>
+              <li><a href="javascript:void(0);" data-toggle="modal" data-target="#fgModal">FG color</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -108,13 +122,13 @@ pre {
     </form>
   </div>
   
-  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">About</h4>
+          <h4 class="modal-title" id="aboutModalLabel">About</h4>
         </div>
         <div class="modal-body">
           <pre>
@@ -126,6 +140,62 @@ pre {
           A web terminal to use aesh with cloverX framework
           </code>
           </pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="bgModal" tabindex="-1" role="dialog" aria-labelledby="bgModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="bgModalLabel">Background color</h4>
+        </div>
+        <div class="modal-body">
+          
+          <a href="javascript:void(0);"><span class="label label-default">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-primary">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-success">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-info">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-warning">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-danger">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-cloverxell">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-black">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-white">___</span></a>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="fgModal" tabindex="-1" role="dialog" aria-labelledby="fgModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="fgModalLabel">Foreground color</h4>
+        </div>
+        <div class="modal-body">
+          
+          <a href="javascript:void(0);"><span class="label label-default">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-primary">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-success">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-info">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-warning">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-danger">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-cloverxell">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-black">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-white">___</span></a>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
