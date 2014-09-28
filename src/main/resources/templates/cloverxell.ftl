@@ -33,14 +33,15 @@ body {
 	box-shadow: none;
 }
 
-textarea {
-	resize: none;
-}
-
-pre {
+.pre-command-result {
   background-color: #002b36; 
   color: #657b83;
   border: #002b36;
+}
+
+.command-result {
+  background-color: #002b36; 
+  color: #657b83;
 }
 
 .label-cloverxell {
@@ -112,12 +113,17 @@ pre {
 
   <div style="padding-left: 10px; width: 98%">
     <form id="commandForm">
-      <div class="row" style="background-color: #002b36;">
+      <div class="row">
         <div class="input-group">
           <span id="commandPrompt" class="input-group-addon" style="padding-left: 12px; padding-right: 0; border: #002b36; background-color: #002b36; color: #657b83;">[cloverxell@localhost]$</span> 
           <input type="text" id="inputCommand" class="form-control" style="border: #002b36; background-color: #002b36; color: #657b83;">
         </div>
-        <div id="commandResult" style="background-color: #002b36; color: #657b83;"></div>
+        <div id="commandResult" class='command-result'>
+          <pre id="preCommandResult" class='pre-command-result'>
+          <code id="codeCommandResult" class='code-command-result'>
+          </code>
+          </pre>
+        </div>
       </div>
     </form>
   </div>
@@ -158,15 +164,15 @@ pre {
         </div>
         <div class="modal-body">
           
-          <a href="javascript:void(0);"><span class="label label-default">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-primary">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-success">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-info">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-warning">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-danger">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-cloverxell">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-black">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-white">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-default" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-primary" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-success" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-info" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-warning" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-danger" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-cloverxell" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-black" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-white" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
           
         </div>
         <div class="modal-footer">
@@ -186,15 +192,15 @@ pre {
         </div>
         <div class="modal-body">
           
-          <a href="javascript:void(0);"><span class="label label-default">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-primary">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-success">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-info">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-warning">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-danger">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-cloverxell">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-black">___</span></a>
-          <a href="javascript:void(0);"><span class="label label-white">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-default" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-primary" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-success" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-info" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-warning" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-danger" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-cloverxell" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-black" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          <a href="javascript:void(0);"><span class="label label-white" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
           
         </div>
         <div class="modal-footer">
