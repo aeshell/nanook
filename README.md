@@ -9,6 +9,26 @@ A web terminal
 ![Alt cloverxellm](https://raw.githubusercontent.com/EsmerilProgramming/cloverxell/master/cloverxellm.png)
 
 
+Download:
+---------
+
+[cloverxell-0.56.zip](https://github.com/EsmerilProgramming/cloverxell/releases/download/0.56/cloverxell-0.56.zip)
+
+
+```shell
+$ unzip cloverxell-0.56.zip 
+```
+
+```shell
+$ java -jar cloverxell-0.56.jar 
+```
+
+Host, port and context:
+
+```shell
+$ java -jar cloverxell-0.56.jar -h 192.168.1.1 -p 8080 -c app
+```
+
 
 Your own build:
 ---------------
@@ -23,21 +43,4 @@ $ cd cloverxell
 
 ```shell
 $ mvn clean package
-```
-
-Run:
-----
-
-```shell
-$ cd target  
-```
-
-```shell
-$ java -jar cloverxell-0.56.jar 
-```
-
-Host, port and context:
-
-```shell
-$ java -jar cloverxell-0.56.jar -h 192.168.1.1 -p 8080 -c app
 ```
