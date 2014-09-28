@@ -72,6 +72,7 @@ body {
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-left: -20px;">File<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="javascript:void(0);" onclick="cloverxell.newTab();">Open Tab</a></li>
+              <li><a href="javascript:void(0);" onclick="cloverxell.stop();">Release</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
