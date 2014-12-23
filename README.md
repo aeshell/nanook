@@ -3,16 +3,16 @@ cloverxell
 
 A web terminal
 
-![Alt cloverxell](https://raw.githubusercontent.com/EsmerilProgramming/cloverxell/master/cloverxell.png)
+![Alt cloverxell](https://raw.githubusercontent.com/aeshell/cloverxell/master/cloverxell.png)
 
 
-![Alt cloverxellm](https://raw.githubusercontent.com/EsmerilProgramming/cloverxell/master/cloverxellm.png)
+![Alt cloverxellm](https://raw.githubusercontent.com/aeshell/cloverxell/master/cloverxellm.png)
 
 
 Download:
 ---------
 
-[cloverxell-0.56.zip](https://github.com/EsmerilProgramming/cloverxell/releases/download/0.56/cloverxell-0.56.zip)
+[cloverxell-0.56.zip](https://github.com/aeshell/cloverxell/releases/download/0.56/cloverxell-0.56.zip)
 
 
 ```shell
@@ -34,7 +34,7 @@ Your own build:
 ---------------
 
 ```shell
-$ git clone https://github.com/EsmerilProgramming/cloverxell.git 
+$ git clone https://github.com/aeshell/cloverxell.git
 ```
 
 ```shell
