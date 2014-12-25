@@ -95,10 +95,10 @@ $("body").on("keydown", "#inputCommand", function(e) {
   } 
 });
 
-$("#inputTitle").keypress(function(event){
-	if (event.which == 13) {
-		var value = $("#inputTitle").val();
-		event.preventDefault();
-		$(document).prop('title', value);
-	}
+$("#inputTitle").keypress(function(event) {
+  if (event.which == 13) {
+	var value = $("#inputTitle").val();
+	event.preventDefault();
+	$(document).prop('title', value);
+  }
 });
