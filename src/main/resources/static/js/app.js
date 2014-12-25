@@ -92,5 +92,13 @@ $("body").on("keydown", "#inputCommand", function(e) {
   if (e.which == 9) {
     e.preventDefault();
     cloverxell.send("\t");
-  }
+  } 
+});
+
+$("#inputTitle").keypress(function(event){
+	if (event.which == 13) {
+		var value = $("#inputTitle").val();
+		event.preventDefault();
+		$(document).prop('title', value);
+	}
 });
