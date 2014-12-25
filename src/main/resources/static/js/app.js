@@ -100,5 +100,6 @@ $("#inputTitle").keypress(function(event) {
 	var value = $("#inputTitle").val();
 	event.preventDefault();
 	$(document).prop('title', value);
+	$("#titleForm").css("display","none")
   }
 });
