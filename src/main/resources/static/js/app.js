@@ -103,3 +103,7 @@ $("#inputTitle").keypress(function(event) {
 	$("#titleForm").css("display","none")
   }
 });
+
+$(document).ready(function(){
+	$("#inputCommand").focus();
+});
