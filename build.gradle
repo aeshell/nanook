@@ -1,0 +1,31 @@
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "eclipse"
+apply plugin: "maven"
+apply plugin: "application"
+
+group = "org.jboss.aesh"
+version = "0.56"
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+jar {
+    manifest {
+        attributes "Implementation-Title": "A web terminal", "Implementation-Version": version, "Main-Class": "Main"
+    }
+}
+
+mainClassName = "org.jboss.aesh.cloverxell.AppMain"
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/groups/public"
+    }
+}
+
+dependencies {
+    compile "org.jboss.aesh:aesh:0.56"
+    compile "org.jboss.aesh:aesh-extensions:0.56"
+    compile "com.github.esmerilprogramming:cloverx:0.2.0-SNAPSHOT"
+}

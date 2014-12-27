@@ -3,6 +3,12 @@
 .classpath
 .settings
 target
+.idea
+build
+.gradle
+out
+cloverxell.iml
+/bin/
 .project
 *~
 .*
