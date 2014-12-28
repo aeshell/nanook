@@ -106,4 +106,5 @@ $("#inputTitle").keypress(function(event) {
 
 $(document).ready(function(){
 	$("#inputCommand").focus();
+	cloverxell.send("\n");
 });
