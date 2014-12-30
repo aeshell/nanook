@@ -68,7 +68,6 @@ body {
         </button>
       </div>
 
-      <div class="collapse navbar-collapse" id="cloverxell_menu">
         <ul class="nav navbar-nav">
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-left: -20px;">File<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -146,6 +145,28 @@ body {
           0.57-SNAPSHOT
 
           A web terminal
+          </code>
+          </pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="notRunningModal" tabindex="-1" role="dialog" aria-labelledby="notRunningModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="notRunningModalLabel">ÆSH not running...</h4>
+        </div>
+        <div class="modal-body">
+          <pre>
+          <code>
+          ÆSH not running anymore, please restart the app.
           </code>
           </pre>
         </div>

@@ -45,15 +45,6 @@ public class CloverxellController {
         aesh.reset();
     }
 
-    @Page("stop")
-    public void stop(CloverXRequest request) throws Exception {
-        AeshHandler aesh = getAeshHandler(request);
-        aesh.stop();
-        CloverXSession session = request.getSession();
-        session.destroy();
-        LOGGER.info("stoped.");
-    }
-
     protected AeshHandler getAeshHandler(CloverXRequest request) {
         CloverXSession session = request.getSession();
         Object attribute = session.getAttribute("aesh");

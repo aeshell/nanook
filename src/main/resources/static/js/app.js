@@ -25,6 +25,11 @@ var cloverxell = {
       dataType : "html",
       success : function(response) {
         var html = response;
+        console.log(html);
+        if (html === "") {
+          $('#notRunningModal').modal('show'); 
+          return false;
+        }
         var ps1 = "[" + window.location.hostname + "@" + html.split("@", 2)[1]
             + "]$";
         $("#commandPrompt").html(ps1);
@@ -41,11 +46,6 @@ var cloverxell = {
         console.log("Status: " + st);
         console.dir(xhr);
       }
-    });
-  },
-  stop : function() {
-    $.ajax({
-      url : $(location).attr("href") + "/stop"
     });
   },
   newTab : function() {
