@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jboss.aesh</groupId>
   <artifactId>cloverxell</artifactId>
-  <version>0.56</version>
+  <version>0.57-SNAPSHOT</version>
   <name>cloverxell</name>
   <packaging>jar</packaging>
   <properties>
@@ -86,7 +86,6 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
   </build>
   <repositories>
     <repository>
@@ -103,12 +102,12 @@
     <dependency>
       <groupId>org.jboss.aesh</groupId>
       <artifactId>aesh</artifactId>
-      <version>0.56</version>
+      <version>0.57-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.aesh</groupId>
       <artifactId>aesh-extensions</artifactId>
-      <version>0.56</version>
+      <version>0.57-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
