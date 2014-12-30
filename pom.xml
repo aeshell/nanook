@@ -32,9 +32,6 @@
             </goals>
             <configuration>
               <outputDirectory>${project.build.directory}/lib</outputDirectory>
-              <overWriteReleases>false</overWriteReleases>
-              <overWriteSnapshots>false</overWriteSnapshots>
-              <overWriteIfNewer>true</overWriteIfNewer>
               <includeScope>runtime</includeScope>
             </configuration>
           </execution>
@@ -50,6 +47,8 @@
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
               <mainClass>org.jboss.aesh.cloverxell.AppMain</mainClass>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <useUniqueVersions>false</useUniqueVersions>
             </manifest>
             <manifestEntries>
               <Class-Path>.</Class-Path>
