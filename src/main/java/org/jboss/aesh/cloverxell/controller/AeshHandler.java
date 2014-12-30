@@ -31,6 +31,7 @@ import org.jboss.aesh.extensions.cat.Cat;
 import org.jboss.aesh.extensions.cd.Cd;
 import org.jboss.aesh.extensions.clear.Clear;
 import org.jboss.aesh.extensions.echo.Echo;
+import org.jboss.aesh.extensions.exit.Exit;
 import org.jboss.aesh.extensions.ls.Ls;
 import org.jboss.aesh.extensions.mkdir.Mkdir;
 import org.jboss.aesh.extensions.pwd.Pwd;
@@ -74,7 +75,7 @@ public class AeshHandler {
 
         try {
             add(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class, Cat.class,
-                Clear.class, Echo.class);
+                Clear.class, Echo.class, Exit.class);
         }
         catch (IOException e) {
             LOGGER.error(e.getMessage());

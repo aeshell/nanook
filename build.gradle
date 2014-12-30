@@ -1,31 +1,35 @@
-apply plugin: "java"
-apply plugin: "idea"
-apply plugin: "eclipse"
-apply plugin: "maven"
-apply plugin: "application"
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'application'
 
-group = "org.jboss.aesh"
-version = "0.56"
+group = 'org.jboss.aesh'
+version = '0.57-SNAPSHOT'
+
+mainClassName = 'org.jboss.aesh.cloverxell.AppMain'
+
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 jar {
     manifest {
-        attributes "Implementation-Title": "A web terminal", "Implementation-Version": version, "Main-Class": "Main"
+        attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain'
     }
 }
-
-mainClassName = "org.jboss.aesh.cloverxell.AppMain"
 
 repositories {
     mavenCentral()
-    maven {
-        url "https://oss.sonatype.org/content/groups/public"
-    }
+    mavenLocal()
 }
 
 dependencies {
-    compile "org.jboss.aesh:aesh:0.56"
-    compile "org.jboss.aesh:aesh-extensions:0.56"
-    compile "com.github.esmerilprogramming:cloverx:0.2.0-SNAPSHOT"
+    compile group: 'org.jboss.aesh', name: 'aesh', version: version
+    compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: version
+    compile group: 'com.github.esmerilprogramming', name: 'cloverx', version: '0.2.0-SNAPSHOT'
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2'
 }
