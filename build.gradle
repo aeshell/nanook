@@ -12,12 +12,6 @@ mainClassName = 'org.jboss.aesh.cloverxell.AppMain'
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain'
-    }
-}
-
 repositories {
     mavenCentral()
     mavenLocal()
@@ -28,6 +22,12 @@ dependencies {
     compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: version
     compile group: 'com.github.esmerilprogramming', name: 'cloverx', version: '0.2.0-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain', 'Class-Path': '.' + ' ' + configurations.compile.collect { it.getName() }.join(' ')
+    }
 }
 
 task wrapper(type: Wrapper) {
