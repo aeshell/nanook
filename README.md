@@ -35,7 +35,7 @@ $ git clone https://github.com/aeshell/aesh.git
 $ git clone https://github.com/aeshell/aesh-extensions.git
 $ git clone https://github.com/EsmerilProgramming/cloverx.git
 $ git clone https://github.com/aeshell/cloverxell.git
-$ cd aesh && $ ./gradlew clean install
+$ cd aesh && ./gradlew clean install
 $ cd ../aesh-extensions && ./gradlew clean install
 $ cd ../cloverx && ./gradlew clean install
 $ cd ../cloverxell && ./gradlew clean build distZip
