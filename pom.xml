@@ -47,7 +47,6 @@
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
               <mainClass>org.jboss.aesh.cloverxell.AppMain</mainClass>
-              <overWriteIfNewer>true</overWriteIfNewer>
               <useUniqueVersions>false</useUniqueVersions>
             </manifest>
             <manifestEntries>
