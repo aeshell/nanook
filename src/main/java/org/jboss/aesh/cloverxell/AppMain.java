@@ -30,6 +30,7 @@ public class AppMain {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.withHost("0.0.0.0");
         cb.withAppContext("app");
+        cb.withPackageToScan("org.jboss.aesh.cloverxell");
 
         List<String> options = new ArrayList<>();
         for (String o : args) {

@@ -38,7 +38,7 @@ $ git clone https://github.com/aeshell/cloverxell.git
 $ cd aesh && ./gradlew clean install
 $ cd ../aesh-extensions && ./gradlew clean install
 $ cd ../cloverx && ./gradlew clean install
-$ cd ../cloverxell && ./gradlew clean build distZip
+$ cd ../cloverxell && ./gradlew clean distZip
 $ cd build/distributions && unzip cloverxell-0.57-SNAPSHOT.zip
 $ cd cloverxell-0.57-SNAPSHOT/bin/
 $ ./cloverxell
