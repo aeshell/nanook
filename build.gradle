@@ -20,16 +20,23 @@ repositories {
 dependencies {
     compile group: 'org.jboss.aesh', name: 'aesh', version: version
     compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: version
-    compile group: 'com.github.esmerilprogramming', name: 'cloverx', version: '0.2.0-SNAPSHOT'
+    compile group: 'com.github.esmerilprogramming', name: 'cloverx', version: '0.2.2-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain', 'Class-Path': '.' + ' ' + configurations.compile.collect { it.getName() }.join(' ')
+        attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain', 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
     }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.2'
+}
+
+run {
+    if (System.getProperty('DEBUG', 'false') == 'true') {
+        jvmArgs '-Xdebug',
+            '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5678'
+    }
 }
