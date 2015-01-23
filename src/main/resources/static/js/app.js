@@ -25,7 +25,6 @@ var cloverxell = {
       dataType : "html",
       success : function(response) {
         var html = response;
-        console.log(html);
         if (html === "") {
           $('#notRunningModal').modal('show'); 
           return false;
@@ -46,6 +45,11 @@ var cloverxell = {
         console.log("Status: " + st);
         console.dir(xhr);
       }
+    });
+  },
+  remove : function(commandName) {
+    $.ajax({
+      url : $(location).attr("href") + "/remove?commandName=" + commandName
     });
   },
   newTab : function() {
@@ -94,6 +98,43 @@ $("body").on("keydown", "#inputCommand", function(e) {
     cloverxell.send("\t");
   } 
 });
+
+function availableCommands()  {
+  var inputCommand = new Object();
+  inputCommand.customCommand = "\t"
+  $.ajax({
+    url : $(location).attr("href") + "/send",
+    data : inputCommand,
+    type : "POST",
+    dataType : "html",
+    success : function(response) {
+      var html = response;
+      if (html === "") {
+        $('#notRunningModal').modal('show'); 
+        return false;
+      }
+      html = html.replace(inputCommand.command, '');
+      html = html.replace("\n", "");
+      html = html.replace("@cloverxell", "");
+      var resultEscaped = $("<div/>").text(html).html();
+      
+      var item = "";
+      resultEscaped.split(" ").forEach(function (c) {
+        console.log(c);
+        item = item + "<a href=javascript:void(0);><span onclick=cloverxell.remove(\'" + c + "\');>" + c + "</span></a>&nbsp;";
+        
+      });
+      $("#availableCommands").html(item).text();
+      
+    },
+    error : function(xhr, st, err) {
+      console.log("Error: " + err);
+      console.log("Status: " + st);
+      console.dir(xhr);
+    }
+  });
+  
+}
 
 $("#inputTitle").keypress(function(event) {
   if (event.which == 13) {

@@ -16,7 +16,6 @@ import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
 import org.esmerilprogramming.cloverx.http.CloverXRequest;
 import org.esmerilprogramming.cloverx.http.CloverXSession;
-import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
@@ -24,11 +23,12 @@ import org.jboss.logging.Logger;
 @Controller
 public class CloverxellController {
 
-    private static final Logger LOGGER = Logger.getLogger(CloverxellController.class);
+    private static final String AESH = "aesh";
+    private static final String TEMPLATE = "cloverxell.ftl";
 
-    @Page(value = "", responseTemplate = "cloverxell.ftl")
+    @Page(value = "", responseTemplate = TEMPLATE)
     public void init() throws Exception {
-        LOGGER.info("started.");
+    
     }
 
     @Page("send")
@@ -45,13 +45,17 @@ public class CloverxellController {
         aesh.reset();
     }
 
+    @Page("remove")
+    public void remove(String commandName, CloverXRequest request) {
+        getAeshHandler(request).remove(commandName);
+    }
+    
     protected AeshHandler getAeshHandler(CloverXRequest request) {
         CloverXSession session = request.getSession();
-        Object attribute = session.getAttribute("aesh");
-        if (attribute == null) {
-            session.setAttribute("aesh", new AeshHandler());
+        if (session.getAttribute(AESH) == null) {
+            session.setAttribute(AESH, new AeshHandler());
         }
-        return session.getAttribute("aesh", AeshHandler.class);
+        return session.getAttribute(AESH, AeshHandler.class);
     }
 
 }
