@@ -78,6 +78,7 @@ body {
             <ul class="dropdown-menu" role="menu">
               <li><a href="javascript:void(0);" data-toggle="modal" data-target="#bgModal">BG color</a></li>
               <li><a href="javascript:void(0);" data-toggle="modal" data-target="#fgModal">FG color</a></li>
+              <li><a href="javascript:void(0);" data-toggle="modal" data-target="#availableCommandsModal" onclick="availableCommands();">Remove command</a></li>
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -224,6 +225,24 @@ body {
           <a href="javascript:void(0);"><span class="label label-cloverxell" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
           <a href="javascript:void(0);"><span class="label label-black" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
           <a href="javascript:void(0);"><span class="label label-white" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="availableCommandsModal" tabindex="-1" role="dialog" aria-labelledby="availableCommandsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="availableCommandsModalLabel">Available commands - click to remove:</h4>
+        </div>
+        <div class="modal-body" id="availableCommands">
           
         </div>
         <div class="modal-footer">

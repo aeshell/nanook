@@ -25,6 +25,7 @@ import org.jboss.aesh.console.Config;
 import org.jboss.aesh.console.command.Command;
 import org.jboss.aesh.console.command.registry.AeshCommandRegistryBuilder;
 import org.jboss.aesh.console.command.registry.CommandRegistry;
+import org.jboss.aesh.console.command.registry.MutableCommandRegistry;
 import org.jboss.aesh.console.settings.Settings;
 import org.jboss.aesh.console.settings.SettingsBuilder;
 import org.jboss.aesh.extensions.cat.Cat;
@@ -140,6 +141,11 @@ public class AeshHandler {
         aeshConsole = consoleBuilder.create();
         aeshConsole.start();
         getStream().flush();
+    }
+    
+    public void remove(String commandName) {
+        MutableCommandRegistry mutableRegistry = (MutableCommandRegistry) registry;
+        mutableRegistry.removeCommand(commandName);
     }
 
     private PipedOutputStream getPos() {
