@@ -92,7 +92,7 @@ body {
             </ul></li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="https://github.com/EsmerilProgramming/cloverxell" target="_blank">Contents</a></li>
+              <li><a href="https://github.com/aeshell/cloverxell" target="_blank">Contents</a></li>
               <li><a href="javascript:void(0);" id="about" data-toggle="modal" data-target="#aboutModal">About</a></li>
             </ul>
           </li>
@@ -107,7 +107,7 @@ body {
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="https://github.com/EsmerilProgramming/cloverxell" target="_blank">Cloverxell</a></li>
+          <li><a href="https://github.com/aeshell/cloverxell" target="_blank">Cloverxell</a></li>
         </ul>
       </div>
     </div>
