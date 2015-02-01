@@ -72,7 +72,10 @@ public class AeshHandler {
         stream = new ByteArrayOutputStream();
 
         settings =
-            new SettingsBuilder().inputStream(pis).outputStream(new PrintStream(stream)).create();
+            new SettingsBuilder().inputStream(pis)
+                .outputStreamError(new PrintStream(stream))
+                .outputStream(new PrintStream(stream))
+                .create();
 
         try {
             add(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class, Cat.class,
@@ -123,7 +126,7 @@ public class AeshHandler {
 
     private void pause() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(200);
         }
         catch (InterruptedException e) {
             e.printStackTrace();
@@ -142,7 +145,7 @@ public class AeshHandler {
         aeshConsole.start();
         getStream().flush();
     }
-    
+
     public void remove(String commandName) {
         MutableCommandRegistry mutableRegistry = (MutableCommandRegistry) registry;
         mutableRegistry.removeCommand(commandName);
