@@ -40,7 +40,11 @@ public class CloverxellController {
         else {
             aesh.run(customCommand);
         }
-        String result = aesh.getResult() + "@" + aesh.getCurrentDirectory();
+        
+        
+        String result = aesh.getResult();
+        result = result.replaceAll("@", " ");
+        result = result + "@" + aesh.getCurrentDirectory();
         request.getExchange().getResponseSender().send(result);
         aesh.reset();
     }
