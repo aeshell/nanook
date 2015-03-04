@@ -5,38 +5,40 @@ apply plugin: 'maven'
 apply plugin: 'application'
 
 group = 'org.jboss.aesh'
-version = '0.57-SNAPSHOT'
+version = '0.57'
 
 mainClassName = 'org.jboss.aesh.cloverxell.AppMain'
 
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
-    mavenCentral()
-    mavenLocal()
+  mavenCentral()
+  maven {
+    url 'https://oss.sonatype.org/content/groups/public'
+  }
 }
 
 dependencies {
-    compile group: 'org.jboss.aesh', name: 'aesh', version: version
+  compile group: 'org.jboss.aesh', name: 'aesh', version: version
     compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: version
     compile group: 'com.github.esmerilprogramming', name: 'cloverx', version: '0.3.0-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
 jar {
-    manifest {
-        attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain', 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
-    }
+  manifest {
+    attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain', 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
+  }
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
+  gradleVersion = '2.2.1'
 }
 
 run {
-    if (System.getProperty('DEBUG', 'false') == 'true') {
-        jvmArgs '-Xdebug',
+  if (System.getProperty('DEBUG', 'false') == 'true') {
+    jvmArgs '-Xdebug',
             '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5678'
-    }
+  }
 }
