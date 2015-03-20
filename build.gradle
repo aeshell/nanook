@@ -5,7 +5,7 @@ apply plugin: 'maven'
 apply plugin: 'application'
 
 group = 'org.jboss.aesh'
-version = '0.58-SNAPSHOT'
+version = '0.60-SNAPSHOT'
 
 mainClassName = 'org.jboss.aesh.cloverxell.AppMain'
 
