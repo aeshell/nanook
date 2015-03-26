@@ -2,7 +2,7 @@
  * JBoss, Home of Professional Open Source Copyright 2014 Red Hat Inc. and/or its affiliates and
  * other contributors as indicated by the @authors tag. All rights reserved. See the copyright.txt
  * in the distribution for a full listing of individual contributors.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in
@@ -37,6 +37,7 @@ import org.jboss.aesh.extensions.ls.Ls;
 import org.jboss.aesh.extensions.mkdir.Mkdir;
 import org.jboss.aesh.extensions.pwd.Pwd;
 import org.jboss.aesh.extensions.rm.Rm;
+import org.jboss.aesh.extensions.mv.Mv;
 import org.jboss.aesh.extensions.touch.Touch;
 import org.jboss.aesh.parser.Parser;
 import org.jboss.logging.Logger;
@@ -78,7 +79,7 @@ public class AeshHandler {
                 .create();
 
         try {
-            add(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Touch.class, Cat.class,
+            add(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Mv.class, Touch.class, Cat.class,
                 Clear.class, Echo.class, Exit.class);
         }
         catch (IOException e) {
@@ -100,7 +101,7 @@ public class AeshHandler {
 
     /**
      * Gets the result of the command.
-     * 
+     *
      * @return String
      */
     public String getResult() {
@@ -113,7 +114,7 @@ public class AeshHandler {
 
     /**
      * Runs the desired command.
-     * 
+     *
      * @param command String
      * @throws IOException exception
      */
@@ -161,7 +162,7 @@ public class AeshHandler {
 
     /**
      * Gets all registered commands.
-     * 
+     *
      * @return Set<String>
      */
     public Set<String> getRegisteredCommands() {
@@ -170,7 +171,7 @@ public class AeshHandler {
 
     /**
      * Gets the current working directory.
-     * 
+     *
      * @return String
      */
     public String getCurrentDirectory() {
