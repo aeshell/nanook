@@ -2,7 +2,7 @@
  * JBoss, Home of Professional Open Source Copyright 2014 Red Hat Inc. and/or its affiliates and
  * other contributors as indicated by the @authors tag. All rights reserved. See the copyright.txt
  * in the distribution for a full listing of individual contributors.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in
@@ -28,7 +28,7 @@ public class CloverxellController {
 
     @Page(value = "", responseTemplate = TEMPLATE)
     public void init() throws Exception {
-    
+
     }
 
     @Page("send")
@@ -40,8 +40,7 @@ public class CloverxellController {
         else {
             aesh.run(customCommand);
         }
-        
-        
+
         String result = aesh.getResult();
         result = result.replaceAll("@", " ");
         result = result + "@" + aesh.getCurrentDirectory();
@@ -53,7 +52,7 @@ public class CloverxellController {
     public void remove(String commandName, CloverXRequest request) {
         getAeshHandler(request).remove(commandName);
     }
-    
+
     protected AeshHandler getAeshHandler(CloverXRequest request) {
         CloverXSession session = request.getSession();
         if (session.getAttribute(AESH) == null) {
