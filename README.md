@@ -1,5 +1,5 @@
-cloverxell
-==========
+nanook
+======
 
 A web terminal
 
