@@ -7,7 +7,7 @@ apply plugin: 'application'
 group = 'org.jboss.aesh'
 version = '0.60-SNAPSHOT'
 
-mainClassName = 'org.jboss.aesh.cloverxell.AppMain'
+mainClassName = 'org.jboss.aesh.nanook.AppMain'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
