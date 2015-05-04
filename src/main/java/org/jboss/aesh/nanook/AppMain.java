@@ -10,7 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-package org.jboss.aesh.cloverxell;
+package org.jboss.aesh.nanook;
 
 import java.util.ArrayList;
 import java.util.List;

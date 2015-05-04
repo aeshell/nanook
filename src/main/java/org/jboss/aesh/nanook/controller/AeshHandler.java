@@ -10,7 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-package org.jboss.aesh.cloverxell.controller;
+package org.jboss.aesh.nanook.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -3,40 +3,27 @@ nanook
 
 A web terminal
 
-![Alt cloverxell](https://raw.githubusercontent.com/aeshell/cloverxell/master/cloverxell.png)
+![Alt nanook](https://raw.githubusercontent.com/aeshell/cloverxell/master/cloverxell.png)
 
 
-![Alt cloverxellm](https://raw.githubusercontent.com/aeshell/cloverxell/master/cloverxellm.png)
+![Alt nanookm](https://raw.githubusercontent.com/aeshell/cloverxell/master/cloverxellm.png)
 
 
 Download and run:
 -----------------
 
-[cloverxell-0.57.zip](https://github.com/aeshell/cloverxell/releases/download/0.57/cloverxell-0.57.zip)
+[nanook-0.58.zip](https://github.com/aeshell/cloverxell/releases/download/0.57/nanook-0.58.zip)
 
 
 ```shell
-$ unzip cloverxell-0.57.zip
-$ cd cloverxell-0.57/bin
-$ ./cloverxell
+$ unzip nanook-0.58.zip
+$ cd nanook-0.58/bin
+$ ./nanook
 ```
 
 Host, port and context:
 
 ```shell
-$ ./cloverxell -h 192.168.1.1 -p 8083 -c app
-```
-
-
-Your own build:
----------------
-
-```shell
-$ git clone https://github.com/aeshell/cloverxell.git
-$ cd cloverxell
-$ ./gradlew clean distZip
-$ cd build/distributions && unzip cloverxell-0.57.zip
-$ cd cloverxell-0.57/bin/
-$ ./cloverxell
+$ ./nanook-h 192.168.1.1 -p 8083 -c app
 ```
 

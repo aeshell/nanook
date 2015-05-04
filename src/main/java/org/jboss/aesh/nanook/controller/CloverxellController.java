@@ -10,7 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-package org.jboss.aesh.cloverxell.controller;
+package org.jboss.aesh.nanook.controller;
 
 import org.esmerilprogramming.cloverx.annotation.Controller;
 import org.esmerilprogramming.cloverx.annotation.Page;
@@ -21,10 +21,10 @@ import org.esmerilprogramming.cloverx.http.CloverXSession;
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
 @Controller
-public class CloverxellController {
+public class NanookController {
 
     private static final String AESH = "aesh";
-    private static final String TEMPLATE = "cloverxell.ftl";
+    private static final String TEMPLATE = "nanook.ftl";
 
     @Page(value = "", responseTemplate = TEMPLATE)
     public void init() throws Exception {

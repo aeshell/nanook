@@ -29,12 +29,12 @@ dependencies {
 
 jar {
   manifest {
-    attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.cloverxell.AppMain', 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
+    attributes 'Implementation-Title': 'A web terminal', 'Implementation-Version': version, 'Main-Class': 'org.jboss.aesh.nanook.AppMain', 'Class-Path': configurations.compile.collect { it.getName() }.join(' ')
   }
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '2.2.1'
+  gradleVersion = '2.3'
 }
 
 run {
