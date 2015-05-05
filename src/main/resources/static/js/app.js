@@ -2,7 +2,7 @@
  * JBoss, Home of Professional Open Source Copyright 2014 Red Hat Inc. and/or its affiliates and
  * other contributors as indicated by the @authors tag. All rights reserved. See the copyright.txt
  * in the distribution for a full listing of individual contributors.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in
@@ -10,12 +10,12 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-var cloverxell = {
+var nanook = {
   send : function(customCommand) {
     var inputCommand = new Object();
     inputCommand.command = $("#inputCommand").val();
     if (customCommand) {
-      inputCommand.customCommand = customCommand; 
+      inputCommand.customCommand = customCommand;
     }
     $("#inputCommand").val("");
     $.ajax({
@@ -26,11 +26,11 @@ var cloverxell = {
       success : function(response) {
         var html = response;
         if (html === "") {
-          $('#notRunningModal').modal('show'); 
+          $('#notRunningModal').modal('show');
           return false;
         }
         var ps1 = "[" + window.location.hostname + "@" + html.split("@", 2)[1]
-            + "]$";
+        + "]$";
         $("#commandPrompt").html(ps1);
 
         html = html.replace(inputCommand.command, '');
@@ -89,14 +89,14 @@ var cloverxell = {
 
 $("#commandForm").submit(function(event) {
   event.preventDefault();
-  cloverxell.send();
+  nanook.send();
 });
 
 $("body").on("keydown", "#inputCommand", function(e) {
   if (e.which == 9) {
     e.preventDefault();
-    cloverxell.send("\t");
-  } 
+    nanook.send("\t");
+  }
 });
 
 function availableCommands()  {
@@ -110,22 +110,22 @@ function availableCommands()  {
     success : function(response) {
       var html = response;
       if (html === "") {
-        $('#notRunningModal').modal('show'); 
+        $('#notRunningModal').modal('show');
         return false;
       }
       html = html.replace(inputCommand.command, '');
       html = html.replace("\n", "");
-      html = html.replace("@cloverxell", "");
+      html = html.replace("@nanook", "");
       var resultEscaped = $("<div/>").text(html).html();
-      
+
       var item = "";
       resultEscaped.split(" ").forEach(function (c) {
         console.log(c);
-        item = item + "<a href=javascript:void(0);><span onclick=cloverxell.remove(\'" + c + "\');>" + c + "</span></a>&nbsp;";
-        
+        item = item + "<a href=javascript:void(0);><span onclick=nanook.remove(\'" + c + "\');>" + c + "</span></a>&nbsp;";
+
       });
       $("#availableCommands").html(item).text();
-      
+
     },
     error : function(xhr, st, err) {
       console.log("Error: " + err);
@@ -133,19 +133,19 @@ function availableCommands()  {
       console.dir(xhr);
     }
   });
-  
+
 }
 
 $("#inputTitle").keypress(function(event) {
   if (event.which == 13) {
-	var value = $("#inputTitle").val();
-	event.preventDefault();
-	$(document).prop('title', value);
-	$("#titleForm").css("display","none")
+    var value = $("#inputTitle").val();
+    event.preventDefault();
+    $(document).prop('title', value);
+    $("#titleForm").css("display","none")
   }
 });
 
 $(document).ready(function(){
-	$("#inputCommand").focus();
-	cloverxell.send("\n");
+  $("#inputCommand").focus();
+  nanook.send("\n");
 });

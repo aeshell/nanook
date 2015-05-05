@@ -12,10 +12,10 @@
  */
 package org.jboss.aesh.nanook.controller;
 
-import org.esmerilprogramming.cloverx.annotation.Controller;
-import org.esmerilprogramming.cloverx.annotation.Page;
-import org.esmerilprogramming.cloverx.http.CloverXRequest;
-import org.esmerilprogramming.cloverx.http.CloverXSession;
+import org.esmerilprogramming.overtown.annotation.Controller;
+import org.esmerilprogramming.overtown.annotation.Page;
+import org.esmerilprogramming.overtown.http.OvertownRequest;
+import org.esmerilprogramming.overtown.http.OvertownSession;
 
 /**
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
@@ -32,7 +32,7 @@ public class NanookController {
     }
 
     @Page("send")
-    public void send(String command, String customCommand, CloverXRequest request) throws Exception {
+    public void send(String command, String customCommand, OvertownRequest request) throws Exception {
         AeshHandler aesh = getAeshHandler(request);
         if (customCommand == null) {
             aesh.run(command);
@@ -49,12 +49,12 @@ public class NanookController {
     }
 
     @Page("remove")
-    public void remove(String commandName, CloverXRequest request) {
+    public void remove(String commandName, OvertownRequest request) {
         getAeshHandler(request).remove(commandName);
     }
 
-    protected AeshHandler getAeshHandler(CloverXRequest request) {
-        CloverXSession session = request.getSession();
+    protected AeshHandler getAeshHandler(OvertownRequest request) {
+        OvertownSession session = request.getSession();
         if (session.getAttribute(AESH) == null) {
             session.setAttribute(AESH, new AeshHandler());
         }

@@ -17,9 +17,9 @@ language governing permissions and limitations under the License.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="CloverXell, console web">
+<meta name="description" content="Nanook, console web">
 <meta name="author" content="helio frota">
-<title>Cloverxell</title>
+<title>Nanook</title>
 <link href="static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <style>
@@ -45,7 +45,7 @@ body {
   color: #657b83;
 }
 
-.label-cloverxell {
+.label-nanook {
   background-color: #002b36;
 }
 
@@ -63,7 +63,7 @@ body {
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 <div class="container-fluid">
 <div class="navbar-header">
-<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#cloverxell_menu">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nanook_menu">
 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 </button>
 </div>
@@ -71,8 +71,8 @@ body {
 <ul class="nav navbar-nav">
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-left: -20px;">File<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="javascript:void(0);" onclick="cloverxell.newTab();">Open Tab</a></li>
-<li><a href="javascript:void(0);" onclick="document.getElementById('inputCommand').value='exit';cloverxell.send();">Exit</a></li>
+<li><a href="javascript:void(0);" onclick="nanook.newTab();">Open Tab</a></li>
+<li><a href="javascript:void(0);" onclick="document.getElementById('inputCommand').value='exit';nanook.send();">Exit</a></li>
 </ul></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
@@ -82,17 +82,17 @@ body {
 </ul></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">View<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="javascript:void(0);" onclick="cloverxell.fontInc();">Size +</a></li>
-<li><a href="javascript:void(0);" onclick="cloverxell.fontDec();">Size -</a></li>
+<li><a href="javascript:void(0);" onclick="nanook.fontInc();">Size +</a></li>
+<li><a href="javascript:void(0);" onclick="nanook.fontDec();">Size -</a></li>
 </ul></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Terminal<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="javascript:void(0);" onclick="document.getElementById('inputCommand').value='clear';cloverxell.send();">Clear</a></li>
+<li><a href="javascript:void(0);" onclick="document.getElementById('inputCommand').value='clear';nanook.send();">Clear</a></li>
 <li><a href="javascript:void(0);" onclick="document.getElementById('titleForm').style.display='block';">Set Title...</a></li>
 </ul></li>
 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<span class="caret"></span></a>
 <ul class="dropdown-menu" role="menu">
-<li><a href="https://github.com/aeshell/cloverxell" target="_blank">Contents</a></li>
+<li><a href="https://github.com/aeshell/nanook" target="_blank">Contents</a></li>
 <li><a href="javascript:void(0);" id="about" data-toggle="modal" data-target="#aboutModal">About</a></li>
 </ul>
 </li>
@@ -107,7 +107,7 @@ body {
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
-<li><a href="https://github.com/aeshell/cloverxell" target="_blank">Cloverxell</a></li>
+<li><a href="https://github.com/aeshell/nanook" target="_blank">Nanook</a></li>
 </ul>
 </div>
 </div>
@@ -117,7 +117,7 @@ body {
 <form id="commandForm">
 <div class="row">
 <div class="input-group">
-<span id="commandPrompt" class="input-group-addon" style="padding-left: 12px; padding-right: 0; border: #002b36; background-color: #002b36; color: #657b83;">[cloverxell@localhost]$</span> 
+<span id="commandPrompt" class="input-group-addon" style="padding-left: 12px; padding-right: 0; border: #002b36; background-color: #002b36; color: #657b83;">[nanook@localhost]$</span>
 <input type="text" id="inputCommand" class="form-control" style="border: #002b36; background-color: #002b36; color: #657b83;">
 </div>
 <div id="commandResult" class='command-result' style="margin-top: -25px;">
@@ -141,9 +141,9 @@ body {
 <div class="modal-body">
 <pre>
 <code>
-Cloverxell
+Nanook
 
-0.60-SNAPSHOT
+0.60
 
 A web terminal
 </code>
@@ -188,15 +188,15 @@ A web terminal
 </div>
 <div class="modal-body">
 
-<a href="javascript:void(0);"><span class="label label-default" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-primary" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-success" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-info" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-warning" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-danger" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-cloverxell" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-black" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-white" onclick="cloverxell.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-default" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-primary" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-success" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-info" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-warning" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-danger" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-nanook" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-black" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-white" onclick="nanook.setBgColor($(this).css('backgroundColor'));">___</span></a>
 
 </div>
 <div class="modal-footer">
@@ -216,15 +216,15 @@ A web terminal
 </div>
 <div class="modal-body">
 
-<a href="javascript:void(0);"><span class="label label-default" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-primary" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-success" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-info" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-warning" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-danger" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-cloverxell" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-black" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
-<a href="javascript:void(0);"><span class="label label-white" onclick="cloverxell.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-default" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-primary" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-success" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-info" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-warning" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-danger" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-nanook" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-black" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
+<a href="javascript:void(0);"><span class="label label-white" onclick="nanook.setFgColor($(this).css('backgroundColor'));">___</span></a>
 
 </div>
 <div class="modal-footer">
