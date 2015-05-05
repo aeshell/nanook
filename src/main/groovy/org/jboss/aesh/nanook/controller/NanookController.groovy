@@ -23,10 +23,7 @@ import org.esmerilprogramming.overtown.http.OvertownSession
 @Controller
 class NanookController {
 
-  private static final String AESH = 'aesh'
-  private static final String TEMPLATE = 'nanook.ftl'
-
-  @Page(value = '', responseTemplate = TEMPLATE)
+  @Page(value = '', responseTemplate = 'nanook.ftl')
   void init() throws Exception {
 
   }
@@ -54,10 +51,10 @@ class NanookController {
 
   protected AeshHandler getAeshHandler(OvertownRequest request) {
     OvertownSession session = request.getSession()
-    if (session.getAttribute(AESH) == null) {
-      session.setAttribute(AESH, new AeshHandler())
+    if (session.getAttribute('aesh') == null) {
+      session.setAttribute('aesh', new AeshHandler())
     }
-    session.getAttribute(AESH, AeshHandler)
+    session.getAttribute('aesh', AeshHandler)
   }
 
 }

@@ -1,7 +1,4 @@
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'eclipse'
-apply plugin: 'maven'
+apply plugin: 'groovy'
 apply plugin: 'application'
 
 group = 'org.jboss.aesh'
@@ -21,6 +18,7 @@ repositories {
 }
 
 dependencies {
+  compile group: 'org.codehaus.groovy', name: 'groovy', version: '2.4.3'
   compile group: 'org.jboss.aesh', name: 'aesh', version: version
   compile group: 'org.jboss.aesh', name: 'aesh-extensions', version: version
   compile group: 'com.github.esmerilprogramming', name: 'overtown', version: '0.4.0-SNAPSHOT'
@@ -37,9 +35,3 @@ task wrapper(type: Wrapper) {
   gradleVersion = '2.4'
 }
 
-run {
-  if (System.getProperty('DEBUG', 'false') == 'true') {
-    jvmArgs '-Xdebug',
-            '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5678'
-  }
-}
