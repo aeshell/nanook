@@ -30,7 +30,7 @@ import org.jboss.aesh.extensions.ls.Ls
 import org.jboss.aesh.extensions.mkdir.Mkdir
 import org.jboss.aesh.extensions.pwd.Pwd
 import org.jboss.aesh.extensions.rm.Rm
-import org.jboss.aesh.extensions.mv.Mv
+//import org.jboss.aesh.extensions.mv.Mv
 import org.jboss.aesh.extensions.touch.Touch
 import org.jboss.aesh.parser.Parser
 import org.jboss.logging.Logger
@@ -70,7 +70,7 @@ public class AeshHandler {
       .create()
 
     try {
-      add(Cd, Ls, Mkdir, Pwd, Rm, Mv, Touch, Cat, Clear, Echo, Exit)
+      add(Cd, Ls, Mkdir, Pwd, Rm, /*Mv*/, Touch, Cat, Clear, Echo, Exit)
     } catch (IOException e) {
       LOGGER.error(e.getMessage())
     }
