@@ -6,7 +6,7 @@ target
 build
 .gradle
 out
-cloverxell.iml
+nanook.iml
 /bin/
 .project
 *~

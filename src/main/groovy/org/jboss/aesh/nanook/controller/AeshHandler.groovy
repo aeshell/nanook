@@ -33,15 +33,12 @@ import org.jboss.aesh.extensions.rm.Rm
 //import org.jboss.aesh.extensions.mv.Mv
 import org.jboss.aesh.extensions.touch.Touch
 import org.jboss.aesh.parser.Parser
-import org.jboss.logging.Logger
 
 /**
  * @author Efraim Gentil
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
 public class AeshHandler {
-
-  private static final Logger LOGGER = Logger.getLogger(AeshHandler)
 
   private PipedOutputStream pos
   private PipedInputStream pis
@@ -51,7 +48,6 @@ public class AeshHandler {
   private CommandRegistry registry
   private boolean debugMode
 
-  @SuppressWarnings("unchecked")
   AeshHandler(boolean debugMode) {
 
     this.debugMode = debugMode
@@ -59,7 +55,7 @@ public class AeshHandler {
     try {
       pis = new PipedInputStream(pos)
     } catch (IOException e) {
-      LOGGER.error(e.getMessage())
+      e.printStackTrace()
     }
     stream = new ByteArrayOutputStream()
 
@@ -72,7 +68,7 @@ public class AeshHandler {
     try {
       add(Cd, Ls, Mkdir, Pwd, Rm, /*Mv*/, Touch, Cat, Clear, Echo, Exit)
     } catch (IOException e) {
-      LOGGER.error(e.getMessage())
+      e.printStackTrace()
     }
 
   }
@@ -96,7 +92,7 @@ public class AeshHandler {
   String getResult() {
     String result = Parser.stripAwayAnsiCodes(getStream().toString())
     if (debugMode) {
-      LOGGER.info(result)
+      println result
     }
     result
   }
