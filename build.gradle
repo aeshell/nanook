@@ -2,7 +2,7 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 
 group = 'org.jboss.aesh'
-version = '0.60-SNAPSHOT'
+version = '0.61-SNAPSHOT'
 
 mainClassName = 'org.jboss.aesh.nanook.AppMain'
 
