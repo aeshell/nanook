@@ -11,13 +11,13 @@ import org.wildfly.swarm.undertow.StaticDeployment
 @CompileStatic
 class Main {
 
-    static main(String... args) {
+  static main(String... args) {
 
-        Container container = new Container()
-        WarDeployment deployment = new DefaultWarDeployment(container)
-        deployment.staticContent("/")
-        deployment.getArchive().addClass(NanookServlet)
-        container.start().deploy(deployment)
-        
-    }
+    Container container = new Container()
+    WarDeployment deployment = new DefaultWarDeployment(container)
+    deployment.staticContent('/')
+    deployment.getArchive().addClass(AeshHandler)
+    deployment.getArchive().addClass(NanookServlet)
+    container.start().deploy(deployment)
+  }
 }
