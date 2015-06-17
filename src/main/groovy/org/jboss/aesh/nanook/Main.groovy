@@ -5,6 +5,8 @@ import groovy.transform.CompileStatic
 import org.wildfly.swarm.container.Container
 import org.wildfly.swarm.container.DefaultWarDeployment
 import org.wildfly.swarm.container.WarDeployment
+import org.wildfly.swarm.undertow.StaticDeployment
+
 
 @CompileStatic
 class Main {
@@ -12,10 +14,10 @@ class Main {
     static main(String... args) {
 
         Container container = new Container()
-        container.start()
-
         WarDeployment deployment = new DefaultWarDeployment(container)
+        deployment.staticContent("/")
         deployment.getArchive().addClass(NanookServlet)
-        container.deploy(deployment)
+        container.start().deploy(deployment)
+        
     }
 }
