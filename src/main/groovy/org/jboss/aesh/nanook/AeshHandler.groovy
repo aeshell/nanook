@@ -10,7 +10,6 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-
 package org.jboss.aesh.nanook
 
 import org.jboss.aesh.console.AeshConsole
@@ -105,10 +104,12 @@ class AeshHandler {
    * @throws IOException exception
    */
   void run(String command) throws IOException {
-    getPos().write((command).getBytes())
-    getPos().write(Config.getLineSeparator().getBytes())
-    getPos().flush()
-    pause()
+    if (command) {
+      getPos().write((command).getBytes())
+      getPos().write(Config.getLineSeparator().getBytes())
+      getPos().flush()
+      pause()
+    }
   }
 
   private void pause() {

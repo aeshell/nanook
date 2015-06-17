@@ -19,7 +19,7 @@ var nanook = {
     }
     $("#inputCommand").val("");
     $.ajax({
-      url : $(location).attr("href") + "/send",
+      url : "nanook",
       data : inputCommand,
       type : "POST",
       dataType : "html",
@@ -103,7 +103,7 @@ function availableCommands()  {
   var inputCommand = new Object();
   inputCommand.customCommand = "\t"
   $.ajax({
-    url : $(location).attr("href") + "/send",
+    url : $(location).attr("href") + "nanook",
     data : inputCommand,
     type : "POST",
     dataType : "html",
