@@ -49,9 +49,10 @@
 	</build>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>wildfly-swarm-undertow</artifactId>
+			<artifactId>wildfly-swarm-jaxrs</artifactId>
 			<version>1.0.0.Alpha3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
