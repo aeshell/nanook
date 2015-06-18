@@ -54,6 +54,12 @@
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>wildfly-swarm-jaxrs</artifactId>
 			<version>1.0.0.Alpha3-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.wildfly.swarm</groupId>
+					<artifactId>wildfly-swarm-security</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.aesh</groupId>
