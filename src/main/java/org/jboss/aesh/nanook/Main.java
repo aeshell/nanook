@@ -15,6 +15,7 @@ package org.jboss.aesh.nanook;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.DefaultWarDeployment;
 import org.wildfly.swarm.container.WarDeployment;
+import org.wildfly.swarm.logging.LoggingFraction;
 
 /**
  * @author <a href='mailto:00hf11@gmail.com'>Helio Frota</a>
@@ -24,6 +25,12 @@ public class Main {
     public static void main(String... args) throws Exception {
 
         Container container = new Container();
+        
+        container.subsystem(new LoggingFraction()
+        .formatter("PATTERN", "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
+        .consoleHandler("DEBUG", "PATTERN")
+        .rootLogger("CONSOLE", "DEBUG"));
+        
         WarDeployment deployment = new DefaultWarDeployment(container);
         deployment.staticContent("/");
         deployment.getArchive().addClass(AeshHandler.class);
