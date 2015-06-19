@@ -24,16 +24,17 @@ public class Main {
 
     public static void main(String... args) throws Exception {
 
+        // container configuration.
         Container container = new Container();
-        
         container.subsystem(new LoggingFraction()
         .formatter("PATTERN", "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
         .consoleHandler("DEBUG", "PATTERN")
         .rootLogger("CONSOLE", "DEBUG"));
         
-        WarDeployment deployment = new DefaultWarDeployment(container);
-        deployment.staticContent("/");
-        deployment.getArchive().addPackage("org.jboss.aesh.nanook");
-        container.start().deploy(deployment);
+        // war configuration.
+        WarDeployment war = new DefaultWarDeployment(container);
+        war.staticContent("/");
+        war.getArchive().addPackage("org.jboss.aesh.nanook");
+        container.start().deploy(war);
     }
 }
