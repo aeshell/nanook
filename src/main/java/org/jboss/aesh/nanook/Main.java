@@ -26,10 +26,9 @@ public class Main {
 
         // container configuration.
         Container container = new Container();
-        container.subsystem(new LoggingFraction()
-        .formatter("PATTERN", "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
-        .consoleHandler("DEBUG", "PATTERN")
-        .rootLogger("CONSOLE", "DEBUG"));
+        
+        // logging config.
+        container.subsystem(LoggingFraction.createDebugLoggingFraction());
         
         // war configuration.
         WarDeployment war = new DefaultWarDeployment(container);
