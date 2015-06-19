@@ -6,9 +6,6 @@ A web terminal
 ![Alt nanook](https://raw.githubusercontent.com/aeshell/nanook/master/nanook.png)
 
 
-![Alt nanook](https://raw.githubusercontent.com/aeshell/nanook/master/nanookm.png)
-
-
 #### Your own build (SNAPSHOT):
 
 
