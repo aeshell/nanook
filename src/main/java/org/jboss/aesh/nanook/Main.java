@@ -33,8 +33,7 @@ public class Main {
         
         WarDeployment deployment = new DefaultWarDeployment(container);
         deployment.staticContent("/");
-        deployment.getArchive().addClass(AeshHandler.class);
-        deployment.getArchive().addClass(NanookServlet.class);
+        deployment.getArchive().addPackage("org.jboss.aesh.nanook");
         container.start().deploy(deployment);
     }
 }
