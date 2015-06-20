@@ -9,12 +9,22 @@
   <description>simple web terminal</description>
   <packaging>jar</packaging>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <version.aesh>${project.version}</version.aesh>
+    <version.wildfly.swarm>1.0.0.Alpha4-SNAPSHOT</version.wildfly.swarm>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
-        <version>1.0.0.Alpha4-SNAPSHOT</version>
+        <version>${version.wildfly.swarm}</version>
         <configuration>
           <mainClass>org.jboss.aesh.nanook.Main</mainClass>
         </configuration>
@@ -32,7 +42,7 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-jaxrs</artifactId>
-      <version>1.0.0.Alpha4-SNAPSHOT</version>
+      <version>${version.wildfly.swarm}</version>
       <exclusions>
         <exclusion>
           <groupId>org.wildfly.swarm</groupId>
@@ -43,12 +53,12 @@
     <dependency>
       <groupId>org.jboss.aesh</groupId>
       <artifactId>aesh</artifactId>
-      <version>0.62-SNAPSHOT</version>
+      <version>${version.aesh}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.aesh</groupId>
       <artifactId>aesh-extensions</artifactId>
-      <version>0.62-SNAPSHOT</version>
+      <version>${version.aesh}</version>
     </dependency>
   </dependencies>
 </project>
