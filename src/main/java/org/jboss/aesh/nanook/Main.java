@@ -13,8 +13,8 @@
 package org.jboss.aesh.nanook;
 
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.DefaultWarDeployment;
 import org.wildfly.swarm.container.WarDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 import org.wildfly.swarm.logging.LoggingFraction;
 
 /**
@@ -31,7 +31,7 @@ public class Main {
         container.subsystem(LoggingFraction.createDebugLoggingFraction());
         
         // war configuration.
-        WarDeployment war = new DefaultWarDeployment(container);
+        WarDeployment war = new JAXRSDeployment(container);
         war.staticContent("/");
         war.getArchive().addPackage("org.jboss.aesh.nanook");
         container.start().deploy(war);
