@@ -12,17 +12,17 @@
  */
 package org.jboss.aesh.nanook;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author Yoshimasa Tanabe
@@ -37,9 +37,9 @@ public class NanookRest {
 
         List<PojoCommand> pojoCommandList = new ArrayList<>();
 
-        Stream<String> lines = Files.lines(Paths.get(System.getProperty("user.home"), ".aesh_history"));
-        lines.forEach(line -> pojoCommandList.add(new PojoCommand(line)));
-        lines.close();
+        try (Stream<String> lines = Files.lines(Paths.get(System.getProperty("user.home"), ".aesh_history"))) {
+            lines.forEach(line -> pojoCommandList.add(new PojoCommand(line)));
+        } catch (NoSuchFileException ignore) {}
 
         return pojoCommandList;
     }
