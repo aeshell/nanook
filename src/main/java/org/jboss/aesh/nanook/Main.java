@@ -13,7 +13,7 @@
 package org.jboss.aesh.nanook;
 
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.WarDeployment;
+import org.wildfly.swarm.undertow.WarDeployment;
 import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 import org.wildfly.swarm.logging.LoggingFraction;
 
