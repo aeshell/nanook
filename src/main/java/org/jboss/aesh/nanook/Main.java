@@ -13,14 +13,16 @@
 package org.jboss.aesh.nanook;
 
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.undertow.WarDeployment;
 import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 import org.wildfly.swarm.logging.LoggingFraction;
+import org.wildfly.swarm.undertow.WarDeployment;
 
 /**
  * @author <a href='mailto:00hf11@gmail.com'>Helio Frota</a>
  */
 public class Main {
+
+    private static final String LOG_LEVEL = System.getProperty("nanook.log.level", "DEBUG");
 
     public static void main(String... args) throws Exception {
 
@@ -28,8 +30,13 @@ public class Main {
         Container container = new Container();
         
         // logging config.
-        container.subsystem(LoggingFraction.createDebugLoggingFraction());
-        
+        container.subsystem(new LoggingFraction()
+                .defaultColorFormatter()
+                .formatter("TSV", "%d{yyyy-MM-dd HH:mm:ss,SSS}\t%-5p\t[%c] (%t) %s%e%n")
+                .consoleHandler(LOG_LEVEL, "COLOR_PATTERN")
+                .fileHandler("FILE", "nanook.log", LOG_LEVEL, "TSV")
+                .rootLogger(LOG_LEVEL, "CONSOLE", "FILE"));
+
         // war configuration.
         WarDeployment war = new JAXRSDeployment(container);
         war.staticContent("/");
