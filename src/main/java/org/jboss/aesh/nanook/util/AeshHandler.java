@@ -25,7 +25,6 @@ import org.jboss.aesh.console.Config;
 import org.jboss.aesh.console.command.Command;
 import org.jboss.aesh.console.command.registry.AeshCommandRegistryBuilder;
 import org.jboss.aesh.console.command.registry.CommandRegistry;
-import org.jboss.aesh.console.command.registry.MutableCommandRegistry;
 import org.jboss.aesh.console.settings.Settings;
 import org.jboss.aesh.console.settings.SettingsBuilder;
 import org.jboss.aesh.extensions.cat.Cat;
@@ -64,7 +63,9 @@ public class AeshHandler {
     }
     stream = new ByteArrayOutputStream();
 
-    settings = new SettingsBuilder().inputStream(pis)
+    settings = new SettingsBuilder()
+        .inputStream(pis)
+        .historySize(Integer.MAX_VALUE)
         .outputStreamError(new PrintStream(stream))
         .outputStream(new PrintStream(stream))
         .create();
