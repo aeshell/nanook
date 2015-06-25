@@ -46,6 +46,7 @@ public class Main {
         war.getArchive().addClass(AeshHandler.class);
         war.getArchive().addClass(Command.class);
         war.getArchive().addClass(Log.class);
+        war.getArchive().addClass(NanookEJBTimer.class);
         war.getArchive().addClass(NanookRest.class);
         war.getArchive().addClass(NanookServlet.class);
         container.start().deploy(war);
