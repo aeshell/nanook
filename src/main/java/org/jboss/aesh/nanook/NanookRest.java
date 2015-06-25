@@ -16,6 +16,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import org.jboss.aesh.nanook.pojo.Log;
+import org.jboss.aesh.nanook.pojo.Command;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -37,12 +41,12 @@ public class NanookRest {
     @Path("/history")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PojoCommand> history() throws IOException {
+    public List<Command> history() throws IOException {
 
-        List<PojoCommand> pojoCommandList = new ArrayList<>();
+        List<Command> pojoCommandList = new ArrayList<>();
 
         try (Stream<String> lines = Files.lines(Paths.get(System.getProperty("user.home"), ".aesh_history"))) {
-            lines.forEach(line -> pojoCommandList.add(new PojoCommand(line)));
+            lines.forEach(line -> pojoCommandList.add(new Command(line)));
         } catch (NoSuchFileException ignore) {}
 
         return pojoCommandList;

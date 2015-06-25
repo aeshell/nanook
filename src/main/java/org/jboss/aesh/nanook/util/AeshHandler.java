@@ -10,7 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-package org.jboss.aesh.nanook;
+package org.jboss.aesh.nanook.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -45,7 +45,7 @@ import org.jboss.aesh.parser.Parser;
  * @author Efraim Gentil
  * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
  */
-class AeshHandler {
+public class AeshHandler {
 
   private PipedOutputStream pos;
   private PipedInputStream pis;
@@ -80,7 +80,7 @@ class AeshHandler {
   /**
    * Resets the stream.
    */
-  void reset() {
+  public void reset() {
     stream.reset();
   }
 
@@ -89,7 +89,7 @@ class AeshHandler {
    *
    * @return String
    */
-  String getResult() {
+  public String getResult() {
     String result = Parser.stripAwayAnsiCodes(stream.toString());
     return result;
   }
@@ -100,7 +100,7 @@ class AeshHandler {
    * @param command String
    * @throws IOException exception
    */
-  void run(String command) throws IOException {
+  public void run(String command) throws IOException {
     if (command != null && command.trim().length() >= 0) {
       pos.write((command).getBytes());
       pos.write(Config.getLineSeparator().getBytes());
@@ -129,17 +129,12 @@ class AeshHandler {
     stream.flush();
   }
 
-  void remove(String commandName) {
-    MutableCommandRegistry mutableRegistry = (MutableCommandRegistry) registry;
-    mutableRegistry.removeCommand(commandName);
-  }
-
   /**
    * Gets all registered commands.
    *
    * @return Set<String>
    */
-  Set<String> getRegisteredCommands() {
+  public Set<String> getRegisteredCommands() {
     return registry.getAllCommandNames();
   }
 
@@ -148,14 +143,14 @@ class AeshHandler {
    *
    * @return String
    */
-  String getCurrentDirectory() {
+  public String getCurrentDirectory() {
     return aeshConsole.getAeshContext().getCurrentWorkingDirectory().getName();
   }
 
   /**
    * Stops the aesh console.
    */
-  void stop() {
+  public void stop() {
     aeshConsole.stop();
   }
 

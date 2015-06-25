@@ -10,29 +10,35 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  */
-package org.jboss.aesh.nanook;
+package org.jboss.aesh.nanook.pojo;
+
+import java.time.LocalDateTime;
 
 /**
- * @author <a href='mailto:00hf11@gmail.com'>Helio Frota</a>
+ * @author Yoshimasa Tanabe
  */
-public class PojoCommand {
+public class Log {
 
-    String command;
-    
-    public PojoCommand() {
-        
-    }
-    
-    public PojoCommand(String command) {
-        this.command = command;
-    }
+    private LocalDateTime time;
+    private String level;
+    private String message;
 
-    public String getCommand() {
-        return command;
+    public Log(LocalDateTime time, String level, String message) {
+        this.time = time;
+        this.level = level;
+        this.message = message;
     }
 
-    public void setCommand(String command) {
-        this.command = command;
+    public LocalDateTime getTime() {
+        return time;
     }
-    
+
+    public String getLevel() {
+        return level;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
 }

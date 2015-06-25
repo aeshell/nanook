@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jboss.aesh.nanook.util.AeshHandler;
+
 /**
  * @author <a href='mailto:00hf11@gmail.com'>Helio Frota</a>
  */
@@ -48,10 +50,6 @@ public class NanookServlet extends HttpServlet {
         result = result + "@" + aesh.getCurrentDirectory();
         resp.getWriter().write(result);
         aesh.reset();
-    }
-
-    private void remove(String commandName, HttpServletRequest req) {
-        getAeshHandler(req).remove(commandName);
     }
 
     private AeshHandler getAeshHandler(HttpServletRequest req) {

@@ -12,6 +12,9 @@
  */
 package org.jboss.aesh.nanook;
 
+import org.jboss.aesh.nanook.pojo.Command;
+import org.jboss.aesh.nanook.pojo.Log;
+import org.jboss.aesh.nanook.util.AeshHandler;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 import org.wildfly.swarm.logging.LoggingFraction;
@@ -40,7 +43,11 @@ public class Main {
         // war configuration.
         WarDeployment war = new JAXRSDeployment(container);
         war.staticContent("/");
-        war.getArchive().addPackage("org.jboss.aesh.nanook");
+        war.getArchive().addClass(AeshHandler.class);
+        war.getArchive().addClass(Command.class);
+        war.getArchive().addClass(Log.class);
+        war.getArchive().addClass(NanookRest.class);
+        war.getArchive().addClass(NanookServlet.class);
         container.start().deploy(war);
     }
 }
