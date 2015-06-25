@@ -20,11 +20,15 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
+ * @author <a href='mailto:00hf11@gmail.com'>Helio Frota</a>
  * @author Yoshimasa Tanabe
  */
 @Path("/")
@@ -46,8 +50,43 @@ public class NanookRest {
 
     @Path("/log")
     @GET
-    public String log() {
-        return "NOT_IMPLEMENTED";
+    @Produces(MediaType.TEXT_PLAIN)
+    public String logAsText() throws IOException {
+
+        String log = "no log";
+
+        try (Stream<String> lines = getLogStream()) {
+            log = lines.collect(Collectors.joining(System.getProperty("line.separator")));
+        } catch (NoSuchFileException ignore) {}
+
+        return log;
+    }
+
+    @Path("/log")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Log> logAsJson() throws IOException {
+
+        List<Log> log = new ArrayList<>();
+
+        try (Stream<String> lines = getLogStream()) {
+            log = lines
+                    .filter(line -> line.matches("^[\\d]{4}-[\\d]{2}-[\\d]{2}.*"))  // collect only lines start with time.
+                    .map(line -> {
+                        String[] splitLog = line.split("\\t");
+                        String time = splitLog[0];
+                        String level = splitLog[1].trim();
+                        String message = splitLog[2];
+                        return new Log(LocalDateTime.parse(time, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss,SSS")), level, message);
+                    })
+                    .collect(Collectors.toList());
+        } catch (NoSuchFileException ignore) {}
+
+        return log;
+    }
+
+    private Stream<String> getLogStream() throws IOException {
+        return Files.lines(Paths.get(System.getProperty("jboss.server.log.dir"), "nanook.log"));
     }
 
 }
