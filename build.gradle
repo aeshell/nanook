@@ -22,7 +22,7 @@ repositories {
 dependencies {
     compile 'org.wildfly.swarm:wildfly-swarm-jaxrs:1.0.0.Alpha4-SNAPSHOT'
     compile 'org.wildfly.swarm:wildfly-swarm-ejb:1.0.0.Alpha4-SNAPSHOT'
+    compile 'org.wildfly.swarm:wildfly-swarm-undertow:1.0.0.Alpha4-SNAPSHOT'
     compile 'org.jboss.aesh:aesh:0.61'
     compile 'org.jboss.aesh:aesh-extensions:0.61'
 }
-
