@@ -10,17 +10,14 @@ A web terminal
 
 
 ```
-$ git clone https://github.com/aeshell/aesh.git
+$ git clone https://github.com/wildfly-swarm/wildfly-swarm.git
 
-$ git clone https://github.com/aeshell/aesh-extensions.git
+$ cd wildfly-swarm && mvn clean install -Dmaven.test.skip=true
 
 $ git clone https://github.com/aeshell/nanook.git
 
-$ cd aesh && ./gradlew install
+$ cd ./gradlew clean wildfly-swarm-package && java -jar ./build/libs/nanook-swarm.jar
 
-$ cd ../aesh-extensions && ./gradlew install
-
-$ cd ../nanook && mvn package && java -jar ./target/nanook-0.62-SNAPSHOT-swarm.jar
 ```
 
 
