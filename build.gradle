@@ -1,9 +1,10 @@
 buildscript {
+  version = '1.0.0.Alpha5-SNAPSHOT'
   repositories {
     mavenLocal()
   }
   dependencies {
-    classpath 'org.wildfly.swarm:wildfly-swarm-plugin:1.0.0.Alpha4-SNAPSHOT'
+    classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
   }
 }
 
@@ -14,15 +15,20 @@ apply plugin: 'application'
 
 mainClassName = 'org.jboss.aesh.nanook.Main'
 
+swarm {
+  properties {
+    jboss.http.port = 8181
+  }
+}
+
 repositories {
-    mavenCentral()
     mavenLocal()
 }
 
 dependencies {
-    compile 'org.wildfly.swarm:wildfly-swarm-jaxrs:1.0.0.Alpha4-SNAPSHOT'
-    compile 'org.wildfly.swarm:wildfly-swarm-ejb:1.0.0.Alpha4-SNAPSHOT'
-    compile 'org.wildfly.swarm:wildfly-swarm-undertow:1.0.0.Alpha4-SNAPSHOT'
-    compile 'org.jboss.aesh:aesh:0.61'
-    compile 'org.jboss.aesh:aesh-extensions:0.61'
+    compile "org.wildfly.swarm:wildfly-swarm-jaxrs:$version"
+    compile "org.wildfly.swarm:wildfly-swarm-ejb:$version"
+    compile "org.wildfly.swarm:wildfly-swarm-undertow:$version"
+    compile 'org.jboss.aesh:aesh:0.64'
+    compile 'org.jboss.aesh:aesh-extensions:0.64'
 }

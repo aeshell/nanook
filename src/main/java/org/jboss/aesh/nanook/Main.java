@@ -15,13 +15,13 @@ package org.jboss.aesh.nanook;
 import org.jboss.aesh.nanook.pojo.Command;
 import org.jboss.aesh.nanook.pojo.Log;
 import org.jboss.aesh.nanook.util.AeshHandler;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.logging.LoggingFraction;
-import org.wildfly.swarm.undertow.WarDeployment;
 
 /**
- * @author <a href='mailto:00hf11@gmail.com'>Helio Frota</a>
+ * @author Helio Frota
  */
 public class Main {
 
@@ -41,14 +41,15 @@ public class Main {
                 .rootLogger(LOG_LEVEL, "CONSOLE", "FILE"));
 
         // war configuration.
-        WarDeployment war = new JAXRSDeployment(container);
-        war.staticContent("/");
-        war.getArchive().addClass(AeshHandler.class);
-        war.getArchive().addClass(Command.class);
-        war.getArchive().addClass(Log.class);
-        war.getArchive().addClass(NanookEJBTimer.class);
-        war.getArchive().addClass(NanookRest.class);
-        war.getArchive().addClass(NanookServlet.class);
-        container.start().deploy(war);
+        JAXRSArchive archive = ShrinkWrap.create(JAXRSArchive.class);
+        archive.staticContent("/");
+        archive.addClass(AeshHandler.class);
+        archive.addClass(Command.class);
+        archive.addClass(Log.class);
+        archive.addClass(NanookEJBTimer.class);
+        archive.addClass(NanookRest.class);
+        archive.addClass(NanookServlet.class);
+        archive.addAllDependencies();
+        container.start().deploy(archive);
     }
 }

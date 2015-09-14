@@ -42,7 +42,7 @@ import org.jboss.aesh.parser.Parser;
 
 /**
  * @author Efraim Gentil
- * @author <a href="mailto:00hf11@gmail.com">Helio Frota</a>
+ * @author Helio Frota
  */
 public class AeshHandler {
 
