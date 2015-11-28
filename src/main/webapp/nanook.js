@@ -33,14 +33,14 @@
 //    }
 /////////////////////////
 
-var AeshHandler = Java.type('org.jboss.aesh.nanook.util.AeshHandler');
-var aesh = new AeshHandler();
+//var AeshHandler = Java.type('org.jboss.aesh.nanook.util.AeshHandler');
+//var aesh = new AeshHandler();
 
 $undertow.onGet("/",
     {headers: {"content-type": "text/plain"}},
     [
     function($exchange) {
-      aesh.run('ls');
-      return aesh.getResult();
+      //aesh.run('ls');
+      return 'test';//aesh.getResult();
     }
     ]);
