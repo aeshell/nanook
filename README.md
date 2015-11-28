@@ -2,8 +2,11 @@
 
 A web terminal
 
+### build and run
 
-
+```
+$ gradle clean build && java -jar build/libs/nanook-swarm.jar
+```
 
 ### Built upon...
 
