@@ -12,13 +12,6 @@
  */
 package org.jboss.aesh.nanook.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
-import java.io.PrintStream;
-import java.util.Set;
-
 import org.jboss.aesh.console.AeshConsole;
 import org.jboss.aesh.console.AeshConsoleBuilder;
 import org.jboss.aesh.console.Config;
@@ -39,6 +32,13 @@ import org.jboss.aesh.extensions.pwd.Pwd;
 import org.jboss.aesh.extensions.rm.Rm;
 import org.jboss.aesh.extensions.touch.Touch;
 import org.jboss.aesh.parser.Parser;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
+import java.io.PrintStream;
+import java.util.Set;
 
 /**
  * @author Efraim Gentil
@@ -85,29 +85,24 @@ public class AeshHandler {
     stream.reset();
   }
 
-  /**
-   * Gets the result of the command.
-   *
-   * @return String
-   */
-  public String getResult() {
-    String result = Parser.stripAwayAnsiCodes(stream.toString());
-    return result;
-  }
-
-  /**
-   * Runs the desired command.
-   *
-   * @param command String
-   * @throws IOException exception
-   */
-  public void run(String command) throws IOException {
+  public String run(String command) throws IOException {
     if (command != null && command.trim().length() >= 0) {
       pos.write((command).getBytes());
       pos.write(Config.getLineSeparator().getBytes());
       pos.flush();
       pause();
     }
+    String result = Parser.stripAwayAnsiCodes(stream.toString());
+    return removeExecutedCommand(result);
+  }
+
+  private String removeExecutedCommand(String str) {
+    String[] lines = str.split("\n");
+    StringBuilder sb = new StringBuilder();
+    for (int i = 1; i < lines.length; i++) {
+      sb.append(lines[i] + "\n");
+    }
+    return sb.toString();
   }
 
   private void pause() {

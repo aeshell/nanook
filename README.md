@@ -2,6 +2,8 @@
 
 A web terminal
 
+![Alt nanook](https://raw.githubusercontent.com/aeshell/nanook/master/nanook.png)
+
 ### build and run
 
 ```

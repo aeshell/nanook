@@ -11,13 +11,13 @@
 
 <script>
 function executeCommand(command) {
-  var result = '';
+  var result = 'a';
   $.ajax({
     url: '/nanook',
     data: { command: command },
-    type: 'GET',
-    dataType : 'html',
-    success: function(res) {
+    async: false,
+    dataType : 'text',
+    complete: function(res) {
       result = res.responseText;
     }
   });

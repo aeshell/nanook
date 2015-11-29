@@ -3,9 +3,13 @@ var aesh = new AeshHandler();
 
 $undertow.onGet('/nanook',
   {headers: {'content-type': 'text/plain'}},
-  [ function($exchange) {
-      aesh.run($exchange.param('command'));
-      var result = aesh.getResult();
+  [
+
+    function($exchange) {
+      var result = aesh.run($exchange.param('command'));
+      aesh.reset();
       return result;
-  }]
+    }
+
+  ]
 );
