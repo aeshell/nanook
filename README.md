@@ -4,8 +4,10 @@ An example of Æesh commands being called by browser using WebSockets and Spring
 
 ## How to use
 
-```
-$ gradle bootRun
-```
+1. Clone this repository
+2. Install gradle
+3. Run `gradle bootRun`
+4. Go to http://localhost:8080
 
-Go to http://localhost:8080 and type `ls`
+
+![Alt nanook](https://raw.githubusercontent.com/aeshell/nanook/master/nanook.png)
