@@ -1,16 +1,4 @@
-/*
- * JBoss, Home of Professional Open Source Copyright 2014 Red Hat Inc. and/or its affiliates and
- * other contributors as indicated by the @authors tag. All rights reserved. See the copyright.txt
- * in the distribution for a full listing of individual contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License") you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in
- * writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
- * language governing permissions and limitations under the License.
- */
-package org.jboss.aesh.nanook.util;
+package org.jboss.aesh.nanook;
 
 import org.jboss.aesh.console.AeshConsole;
 import org.jboss.aesh.console.AeshConsoleBuilder;
@@ -22,9 +10,7 @@ import org.jboss.aesh.console.settings.Settings;
 import org.jboss.aesh.console.settings.SettingsBuilder;
 import org.jboss.aesh.extensions.cat.Cat;
 import org.jboss.aesh.extensions.cd.Cd;
-import org.jboss.aesh.extensions.clear.Clear;
 import org.jboss.aesh.extensions.echo.Echo;
-import org.jboss.aesh.extensions.exit.Exit;
 import org.jboss.aesh.extensions.ls.Ls;
 import org.jboss.aesh.extensions.mkdir.Mkdir;
 import org.jboss.aesh.extensions.mv.Mv;
@@ -38,13 +24,8 @@ import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
-import java.util.Set;
 
-/**
- * @author Efraim Gentil
- * @author Helio Frota
- */
-public class AeshHandler {
+public class AeshWrapper {
 
   private PipedOutputStream pos;
   private PipedInputStream pis;
@@ -53,7 +34,7 @@ public class AeshHandler {
   private AeshConsole aeshConsole;
   private CommandRegistry registry;
   
-  public AeshHandler() {
+  public AeshWrapper() {
 
     pos = new PipedOutputStream();
     try {
@@ -71,7 +52,7 @@ public class AeshHandler {
         .create();
 
     try {
-      add(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Mv.class, Touch.class, Cat.class, Clear.class, Echo.class, Exit.class);
+      add(Cd.class, Ls.class, Mkdir.class, Pwd.class, Rm.class, Mv.class, Touch.class, Cat.class, Echo.class);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -123,24 +104,6 @@ public class AeshHandler {
     aeshConsole = consoleBuilder.create();
     aeshConsole.start();
     stream.flush();
-  }
-
-  /**
-   * Gets all registered commands.
-   *
-   * @return Set<String>
-   */
-  public Set<String> getRegisteredCommands() {
-    return registry.getAllCommandNames();
-  }
-
-  /**
-   * Gets the current working directory.
-   *
-   * @return String
-   */
-  public String getCurrentDirectory() {
-    return aeshConsole.getAeshContext().getCurrentWorkingDirectory().getName();
   }
 
   /**

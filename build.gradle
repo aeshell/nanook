@@ -1,25 +1,30 @@
 buildscript {
-  version = '1.0.0.Alpha6-SNAPSHOT'
-  repositories {
-    mavenCentral()
-    mavenLocal()
-  }
-  dependencies {
-    classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
-  }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+    }
 }
 
-apply plugin: 'wildfly-swarm'
 apply plugin: 'java'
-apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'nanook'
+    version =  '0.1.0'
+}
 
 repositories {
-  mavenCentral()
-  mavenLocal()
+    mavenCentral()
 }
 
 dependencies {
-  compile "org.wildfly.swarm:wildfly-swarm-undertow-js:$version"
-  compile 'org.jboss.aesh:aesh:0.66'
-  compile 'org.jboss.aesh:aesh-extensions:0.66'
+    implementation 'org.jboss.aesh:aesh:0.66'
+    implementation 'org.jboss.aesh:aesh-extensions:0.66'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

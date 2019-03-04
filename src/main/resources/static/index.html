@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <style>
+        #result {
+            text-align: left;
+            width: 50%;
+            padding: 1em;
+            border: 1px solid black;
+        }
+
+        div.code {
+            font-family: "Courier New", monospace;
+            white-space: pre;
+        }
+
+        input {
+            width: 51.8%;
+            padding: 0.3em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid black;
+        }
+    </style>
+    <title>Nanook</title>
+</head>
+
+<body>
+    <div>
+        <div class="input-fields">
+            <p>Available commands: cd, ls, mkdir, pwd, rm, mv, touch, cat, echo</p>
+            <input id="command" placeholder="Type here..." />
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+</body>
+<script>
+    const resultWindow = document.getElementById("result");
+    const command = document.getElementById("command");
+
+    const socket = new WebSocket("ws://localhost:8080/socket");
+    socket.onmessage = (event) => {
+        addResultToWindow(event.data);
+    };
+
+    command.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            sendCommand(command.value);
+            command.value = "";
+        }
+    });
+
+    function sendCommand(command) {
+        socket.send(command);
+        addResultToWindow(command);
+    }
+
+    function addResultToWindow(commandResult) {
+        resultWindow.innerHTML += `<div class=code>${commandResult}</div>`
+    }
+</script>
+
+</html>
